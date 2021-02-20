@@ -1,0 +1,30 @@
+<mvc:View
+    controllerName="am.assetmanagment.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.f"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content> 
+						
+			
+			<l:VerticalLayout width="100%">
+			
+			<VBox class="sapUiLargeMarginTop" alignItems="Center" alignContent="Center" >
+			<Input width="250px" id="emlId" placeholder="{i18n>email}"></Input>
+			<Input width="250px" id="pwdId" placeholder="{i18n>password}"></Input>
+			<Button text="{i18n>Login}"></Button>
+			</VBox>
+			
+			</l:VerticalLayout>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
