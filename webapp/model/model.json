@@ -1,0 +1,200 @@
+{
+  "EmployeeDetails":
+    [{
+        "empid":"101",
+        "fName":"Chaitali",
+        "lName":"Pandya",
+        "desig":"Junior UI5 and Fiori Developer",
+        "description":"Hello! I am Chaitali and I am Junior SAP UI5 Consultant",
+        "email":"chaitali@signiwis.com",
+        "psw":"chaitali",
+        "Paddr":"1745/Mission Street",
+        "Caddr":"345/Gayatrinagar,mangal colony",
+        "doj":"17-Oct-2019",
+        "dor":"17-Jan-2023",
+        "zipcode":"327001",
+        "city":"Udaipur",
+        "phone":"7014522493",
+        "state":"Rajasthan",
+        "linkedIn":"/Chaitali",
+        "twitter":"@Chaitali"
+    },
+    {
+        "empid":"102",
+        "fName":"Gaurav",
+        "lName":"Bothra",
+        "desig":"ABAP Consultant",
+        "email":"gaurav@signiwis.com",
+        "description":"Hello! I am Gaurav and I am Senior ABAP Consultant",
+        "psw":"gaurav",
+        "Paddr":"Vijay Nagar",
+        "Caddr":"345/Gayatrinagar,mangal colony",
+        "doj":"05-Oct-2017",
+        "dor":"23-Jan-2020",
+        "zipcode":"327301",
+        "city":"Delhi",
+        "phone":"8988423493",
+        "state":"Delhi",
+        "linkedIn":"/Chaitali",
+        "twitter":"@Chaitali"
+    },
+    {
+        "empid":"103",
+        "fName":"Anurag",
+        "lName":"Chakrabortty",
+        "desig":"Senior Tester Lead",
+        "description":"Hello! I am Anurag and I am Senior Tester Lead",
+        "email":"anurag@signiwis.com",
+        "psw":"anurag",
+        "Paddr":"Sham Colony",
+        "Caddr":"345/Gayatrinagar,mangal colony",
+        "doj":"17-Oct-2019",
+        "dor":"17-Jan-2023",
+        "zipcode":"890801",
+        "city":"Kolkata",
+        "phone":"8989233456",
+        "state":"West Bengal",
+        "linkedIn":"/Chaitali",
+        "twitter":"@Chaitali"
+    }],
+    "AssetsAlloted":[
+        {
+            "empId":"101",
+            "empName":"Chaitali",
+            "assests":[
+                {
+                    "id":"MAC10012A",
+                    "name":"MacBook Air",
+                    "type":"Laptop",
+                    "priority":"high",
+                    "DOA":"17-Oct-2019",
+                    "status":"Completed"
+                },
+                {
+                    "id":"SP36TYPS",
+                    "name":"Apple iPhone x64GB space Grey",
+                    "type":"Smartphone",
+                    "priority":"high",
+                    "DOA":"17-Oct-2019",
+                    "status":"Completed"
+                },
+                {
+                    "id":"SP36CHGR",
+                    "name":"Apple iPhone x64GB space Charger",
+                    "type":"C-Type Charger ",
+                    "priority":"low",
+                    "DOA":"17-Oct-2019",
+                    "status":"Completed"
+                },
+                {
+                    "id":"MAC36CHGR",
+                    "name":"MacBook Air Laptop Charger",
+                    "type":"USB-C Charger ",
+                    "priority":"low",
+                    "DOA":"17-Oct-2019",
+                    "status":"Completed"
+                },
+                {
+                    "id":"Airtel3372-607",
+                    "name":"Airtel 4G with High Speed",
+                    "type":"Internet Dongle",
+                    "priority":"high",
+                    "DOA":"17-Oct-2019",
+                    "status":"Completed"
+                }
+            ]
+        },
+        {
+            "empId":"102",
+            "empName":"Gaurav",
+            "assests":[
+                {
+                    "id":"MAC5TY09",
+                    "name":"MacBook Air",
+                    "type":"Laptop",
+                    "priority":"high",
+                    "DOA":"05-Oct-2018",
+                    "status":"Completed"
+                },
+                {
+                    "id":"Iphone08GH",
+                    "name":"Apple iPhone x64GB space Grey",
+                    "type":"Smartphone",
+                    "priority":"high",
+                    "DOA":"05-Oct-2018",
+                    "status":"Completed"
+                },
+                {
+                    "id":"I08GHCHGR",
+                    "name":"Apple iPhone x64GB space Charger",
+                    "type":"C-Type Charger ",
+                    "priority":"low",
+                    "DOA":"05-Oct-2018",
+                    "status":"Completed"
+                },
+                {
+                    "id":"MAC00CHGR",
+                    "name":"MacBook Air Laptop Charger",
+                    "type":"USB-C Charger ",
+                    "priority":"low",
+                    "DOA":"05-Oct-2018",
+                    "status":"Completed"
+                },
+                {
+                    "id":"JIO8667",
+                    "name":"Jio 4G with High Speed",
+                    "type":"Internet Dongle",
+                    "priority":"high",
+                    "DOA":"23-Jan-2019",
+                    "status":"Completed"
+                }
+            ]
+        },
+        {
+            "empId":"103",
+            "empName":"Anurag",
+            "assests":[
+                {
+                    "id":"DELL90BNF",
+                    "name":"Dell XPS 13",
+                    "type":"Laptop",
+                    "priority":"high",
+                    "DOA":"17-Oct-2019",
+                    "status":"Completed"
+                },
+                {
+                    "id":"Iphone44RE",
+                    "name":"Apple iPhone x64GB space Grey",
+                    "type":"Smartphone",
+                    "priority":"high",
+                    "DOA":"17-Oct-2019",
+                    "status":"Completed"
+                },
+                {
+                    "id":"IFR7CHGR",
+                    "name":"Apple iPhone x64GB space Charger",
+                    "type":"C-Type Charger ",
+                    "priority":"low",
+                    "DOA":"17-Oct-2019",
+                    "status":"Completed"
+                },
+                {
+                    "id":"DELL11CHGR",
+                    "name":"Dell XPS 13 Laptop Charger",
+                    "type":"USB-C Charger ",
+                    "priority":"low",
+                    "DOA":"17-Oct-2019",
+                    "status":"Completed"
+                },
+                {
+                    "id":"JIO8667",
+                    "name":"Jio 4G with High Speed",
+                    "type":"Internet Dongle",
+                    "priority":"high",
+                    "DOA":"17-Oct-2019",
+                    "status":"Completed"
+                }
+            ]
+        }
+    ]
+}

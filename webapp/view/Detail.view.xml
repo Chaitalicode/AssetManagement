@@ -1,0 +1,14 @@
+<mvc:View
+	controllerName="am.assetmanagment.controller.Detail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+<Page title="Detail">
+<content>
+<Text text="Detail"></Text>
+</content>
+</Page>
+</mvc:View>

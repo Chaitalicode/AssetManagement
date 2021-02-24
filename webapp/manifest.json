@@ -55,6 +55,15 @@
         "settings": {
           "bundleName": "am.assetmanagment.i18n.i18n"
         }
+      },
+      "main":{
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/model.json"
+      },
+      "flexibleLayout":{
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {},
+				"preload": false
       }
     },
     "resources": {
@@ -79,6 +88,16 @@
           "name": "RouteMain",
           "pattern": "RouteMain",
           "target": ["TargetMain"]
+        },
+        {
+          "name": "Employee",
+          "pattern": "Employee/{empID}",
+          "target": ["Employee"]
+        },
+        {
+          "name": "Admin",
+          "pattern": "",
+          "target": ["MasterApp","DetailApp"]
         }
       ],
       "targets": {
@@ -86,8 +105,32 @@
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "Main",
+          "viewId": "app",
           "viewName": "Main"
+        },
+        "Employee": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "appEmp",
+          "viewName": "Employee"
+        },
+      
+        "MasterApp":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Master",
+          "controlAggregation": "beginColumnPages",
+          "viewLevel": 0
+        },
+        "DetailApp":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Detail",
+          "controlAggregation": "midColumnPages",
+          "viewLevel": 1
         }
       }
     }
