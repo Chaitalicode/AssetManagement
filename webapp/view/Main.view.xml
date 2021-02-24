@@ -18,11 +18,12 @@
 			<VBox class="sapUiLargeMarginTop" alignItems="Center" alignContent="Center" >
 			<Input width="250px" id="emlId" placeholder="{i18n>email}"></Input>
 			<Input width="250px" id="pwdId" placeholder="{i18n>password}"></Input>
-			<Button text="{i18n>Login}"></Button>
+			<Button text="{i18n>Login}" press="onLogin"></Button>
 			</VBox>
 			
 			</l:VerticalLayout>
 					</content>
+					
 				</Page>
 			</pages>
 		</App>
