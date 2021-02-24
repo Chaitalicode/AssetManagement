@@ -15,48 +15,35 @@ sap.ui.define([
 			onLogin: function () {
 				debugger;
 				var oJsonM = this.getView().getModel("main").getProperty("/EmployeeDetails");
-				var em = this.getView().byId("emlId").getValue();
+				var email = this.getView().byId("emlId").getValue();
 				var pwd = this.getView().byId("pwdId").getValue();
-				var abc;
+				
+				
 
-				if(em === "surya@signiwis.com" && pwd === "surya"){
-					this.oRouter.navTo("Admin");
+				if(email === "surya@signiwis.com" && pwd === "surya"){
+					this.getOwnerComponent().getModel("flexibleLayout").setProperty("/layout","TwoColumnsMidExpanded");
+					this.oRouter.navTo("split");
+					
 				}
 
 				else if(oJsonM instanceof Array){
-				for (abc of oJsonM) {
-					if (abc.email === em && abc.psw === pwd) {
-					var nIdx = oJsonM.indexOf(abc);
+				for (let JData of oJsonM) {
+					if (JData.email === email && JData.psw === pwd) {
+					var nIdx = oJsonM.indexOf(JData);
 						MessageToast.show("Successfully Logged In");
 
 						this.oRouter.navTo("Employee", {
 							empID: nIdx
 						});
 					   return;
-					}
-				
-					
+					}	
+					else{
+						MessageToast.show("Oopss.....!! smething went wrong");
+					}				
 				}
 			}
 			
 		}
-				// if(em === "surya@gmail.com" && pwd === "surya"){
-				// 	this.oRouter.navTo("Admin");
-				//   }
-				// else if(oJsonM instanceof Array)
-				// {
-				// 	oJsonM.forEach(function(ovalue,i){
-                //           debugger;
-						
-				// 		  if(ovalue.email === em && ovalue.psw === pwd){
-				// 				this.oRouter.navTo("Employee", {
-				// 								empID: i
-				// 							}); 
-				// 			  }
 
-						  
-				// 	});
-				// }
-			
 		});
 	});

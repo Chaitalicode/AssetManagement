@@ -18,10 +18,8 @@ sap.ui.define([
 			this.path = "main>/EmployeeDetails/" + this.oEMpId;
             this.assetPath =  "main>/AssetsAlloted/"+ this.oEMpId +"/assests";
 			this.getView().byId("ObjectPageLayout").bindElement(this.path);
-            this.getView().byId("idAssetTable").bindItems({
-                path: this.assetPath,
-                template: this.byId("columnID")
-            });
+			var template = this.byId("columnID");
+            this.getView().byId("idAssetTable").bindItems(this.assetPath,template);
         },
         onNav:function(){
             debugger;
