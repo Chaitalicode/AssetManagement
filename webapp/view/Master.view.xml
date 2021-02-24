@@ -6,7 +6,7 @@
 	height="100%"
 	busyIndicatorDelay="0"
 >
-<Page title="Master">
+<Page title="Master" navButtonPress="onNav" showNavButton="true">
 <content>
 
   <Button text="Three" press="onClm">

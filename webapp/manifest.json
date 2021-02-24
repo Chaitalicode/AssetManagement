@@ -32,10 +32,10 @@
   "sap.ui5": {
     "flexEnabled": false,
     "rootView": {
-      "viewName": "am.assetmanagment.view.Main",
+      "viewName": "am.assetmanagment.view.split",
       "type": "XML",
       "async": true,
-      "id": "Main"
+      "id": "idAppControl"
     },
     "dependencies": {
       "minUI5Version": "1.66.0",
@@ -75,18 +75,18 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
+        "routerClass": "sap.f.routing.Router",
         "viewType": "XML",
         "async": true,
         "viewPath": "am.assetmanagment.view",
         "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false
+        "clearControlAggregation": false,
+        "controlId": "idAppControl"
       },
       "routes": [
         {
           "name": "RouteMain",
-          "pattern": "RouteMain",
+          "pattern": "",
           "target": ["TargetMain"]
         },
         {
@@ -95,8 +95,8 @@
           "target": ["Employee"]
         },
         {
-          "name": "Admin",
-          "pattern": "",
+          "name": "split",
+          "pattern": "master-detail",
           "target": ["MasterApp","DetailApp"]
         }
       ],
@@ -105,15 +105,17 @@
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "app",
-          "viewName": "Main"
+          "controlAggregation": "beginColumnPages",
+          "viewName": "Main",
+          "viewLevel": 0
         },
         "Employee": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "appEmp",
-          "viewName": "Employee"
+          "controlAggregation": "beginColumnPages",
+          "viewName": "Employee",
+          "viewLevel": 3
         },
       
         "MasterApp":{
@@ -130,7 +132,7 @@
           "clearControlAggregation": false,
           "viewName": "Detail",
           "controlAggregation": "midColumnPages",
-          "viewLevel": 1
+          "viewLevel": 2
         }
       }
     }
