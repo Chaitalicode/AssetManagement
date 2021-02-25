@@ -8,10 +8,10 @@
 >
 <Page title="Master" navButtonPress="onNav" showNavButton="true">
 <content>
-
-  <Button text="Three" press="onClm">
-	
-  </Button>
+<List items="{main>/Masterlist}" >
+	<ObjectListItem type="Navigation" press="onList" intro="{main>name}"></ObjectListItem>
+</List>
+ 
 </content>
 </Page>
 </mvc:View>

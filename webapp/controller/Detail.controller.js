@@ -8,8 +8,13 @@ sap.ui.define([
 	return Controller.extend("am.assetmanagment.controller.Detail", {
 		onInit: function () {
 			debugger;
-			
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.getRoute("split").attachPatternMatched(this._onObjectMatched, this);
 
+		},
+		_onObjectMatched:function(oEv){
+			debugger;
+			
 		}
     })
 })

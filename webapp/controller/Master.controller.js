@@ -15,6 +15,12 @@ sap.ui.define([
 
             this.getOwnerComponent().getModel("flexibleLayout").setProperty("/layout","OneColumn");
             this.oRouter.navTo("RouteMain");
+        },
+
+        onList:function(oEv){
+            debugger;
+           var oIdx =  oEv.getSource().getBindingContext("main").getPath();
+
         }
     })
 })

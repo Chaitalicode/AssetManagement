@@ -2,13 +2,14 @@
 	controllerName="am.assetmanagment.controller.Detail"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
 	displayBlock="true"
 	height="100%"
 	busyIndicatorDelay="0"
 >
 <Page title="Detail">
 <content>
-<Text text="Detail"></Text>
+<core:Fragment fragmentName="am.assetmanagment.fragment.employeeDetail" type="XML" ></core:Fragment>
 </content>
 </Page>
 </mvc:View>
