@@ -20,7 +20,7 @@ sap.ui.define([
 				var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
 				
 
-				if(email === "surya@signiwis.com" && pwd === "surya"){
+				if(email === "123" && pwd === "123"){
 					this.getOwnerComponent().getModel("flexibleLayout").setProperty("/layout","TwoColumnsMidExpanded");
 					this.oRouter.navTo("split");
 					

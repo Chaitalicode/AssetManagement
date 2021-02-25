@@ -98,6 +98,16 @@
           "name": "split",
           "pattern": "master-detail",
           "target": ["MasterApp","DetailApp"]
+        },
+        {
+          "name": "split1",
+          "pattern": "master-detail/{hrData}",
+          "target": ["MasterApp","DetailApp"]
+        },
+        {
+          "name": "tripleApp",
+          "pattern": "assetEmp/{my}",
+          "target": ["TripleApp"]
         }
       ],
       "targets": {
@@ -133,6 +143,14 @@
           "viewName": "Detail",
           "controlAggregation": "midColumnPages",
           "viewLevel": 2
+        },
+        "TripleApp":{
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "assetsTriple",
+          "controlAggregation": "endColumnPages",
+          "viewLevel": 3
         }
       }
     }

@@ -19,8 +19,11 @@ sap.ui.define([
 
         onList:function(oEv){
             debugger;
-           var oIdx =  oEv.getSource().getBindingContext("main").getPath();
-
+           var oIdx =  oEv.getSource().getBindingContext("main").getObject().name;
+           this.oRouter.navTo("split1", {
+            hrData: oIdx
+        });
+        this.getOwnerComponent().getModel("flexibleLayout").setProperty("/layout","TwoColumnsMidExpanded");
         }
     })
 })

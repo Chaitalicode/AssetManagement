@@ -9,7 +9,12 @@
 >
 <Page title="Detail">
 <content>
+<VBox id="1st" visible="false">
 <core:Fragment fragmentName="am.assetmanagment.fragment.employeeDetail" type="XML" ></core:Fragment>
+</VBox>
+<VBox id="2nd" visible="false">
+<core:Fragment fragmentName="am.assetmanagment.fragment.assetDetail" type="XML" ></core:Fragment>
+</VBox>
 </content>
 </Page>
 </mvc:View>
