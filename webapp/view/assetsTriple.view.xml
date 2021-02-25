@@ -1,0 +1,83 @@
+<mvc:View
+	controllerName="am.assetmanagment.controller.assetsTriple"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+    xmlns:ui="sap.ui.table"
+	xmlns:core="sap.ui.core"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+<Page title="Tripe">
+<content>
+
+	<List
+		headerText="Products">
+			<ObjectListItem
+				title="{main>empName}"
+				type="Active"
+				press="onListItemPress"
+				number="{main>empId}"
+				 >			
+		</ObjectListItem>
+	</List>
+    	<ui:Table
+				id="uiTableID"
+				visibleRowCount="7"
+				paste="onPaste"
+				ariaLabelledBy="title">
+                <ui:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="title" text="Products"/>
+					</OverflowToolbar>
+				</ui:extension>
+
+                	<ui:columns>
+					<ui:Column width="11rem">
+						<Label text="Product Name" />
+						<ui:template>
+							<Text text="{main>id}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column width="11rem">
+						<Label text="Product Id" />
+						<ui:template>
+							<Input value="{main>name}"/>
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Product Id" />
+						<ui:template>
+							<Input value="{main>priority}"/>
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Product Id" />
+						<ui:template>
+							<Input value="{main>priority}"/>
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Product Id" />
+						<ui:template>
+							<Input value="{main>type}"/>
+						</ui:template>
+					</ui:Column>
+                     <ui:Column width="11rem">
+						<Label text="Product Id" />
+						<ui:template>
+							<Input value="{main>DOA}"/>
+						</ui:template>
+					</ui:Column>
+                      <ui:Column width="11rem">
+						<Label text="Product Id" />
+						<ui:template>
+							<Input value="{main>status}"/>
+						</ui:template>
+					</ui:Column>
+                </ui:columns>
+                </ui:Table>
+           	
+</content>
+</Page>
+</mvc:View>

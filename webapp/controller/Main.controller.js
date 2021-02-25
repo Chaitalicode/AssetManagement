@@ -17,10 +17,10 @@ sap.ui.define([
 				var oJsonM = this.getView().getModel("main").getProperty("/EmployeeDetails");
 				var email = this.getView().byId("emlId").getValue();
 				var pwd = this.getView().byId("pwdId").getValue();
-				
+				var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
 				
 
-				if(email === "surya@signiwis.com" && pwd === "surya"){
+				if(email === "123" && pwd === "123"){
 					this.getOwnerComponent().getModel("flexibleLayout").setProperty("/layout","TwoColumnsMidExpanded");
 					this.oRouter.navTo("split");
 					
@@ -30,7 +30,7 @@ sap.ui.define([
 				for (let JData of oJsonM) {
 					if (JData.email === email && JData.psw === pwd) {
 					var nIdx = oJsonM.indexOf(JData);
-						MessageToast.show("Successfully Logged In");
+						MessageToast.show(oResourceBundle.getText("success_Login"));
 
 						this.oRouter.navTo("Employee", {
 							empID: nIdx
@@ -38,7 +38,7 @@ sap.ui.define([
 					   return;
 					}	
 					else{
-						MessageToast.show("Oopss.....!! smething went wrong");
+						MessageToast.show(oResourceBundle.getText("Invalid_Credentials"));
 					}				
 				}
 			}

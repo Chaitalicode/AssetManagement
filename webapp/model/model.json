@@ -196,5 +196,18 @@
                 }
             ]
         }
-    ]
+    ],
+
+    "Masterlist":[{
+        "name" : "Employee Details"
+    },
+{
+    "name":"Assets Details"
+},
+{
+    "name":"Expenses"
+},
+{
+    "name":"Requests"
+}]
 }

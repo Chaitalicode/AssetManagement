@@ -110,6 +110,11 @@ sap.ui.define([
 
 		onCancel:function(){
 			this.fragment.close();
+		},
+
+		onLogout:function(){
+			debugger;
+			this.oRouter.navTo("RouteMain",{},true);
 		}
 	
 	});

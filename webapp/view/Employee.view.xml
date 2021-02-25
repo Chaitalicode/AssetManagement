@@ -16,7 +16,7 @@
 	<Shell id="shellI">
 		<App id="appEmp">
 			<pages>
-				<Page id="page"  showNavButton="true" navButtonPress="onNav"  title="{i18n>title}">
+				<Page id="page" showHeader="false"  showNavButton="true" navButtonPress="onNav"  title="{i18n>title}">
 					<content> 
 	
 				<ux:ObjectPageLayout id="ObjectPageLayout"	showTitleInHeaderContent="true"	showEditHeaderButton="true"	editHeaderButtonPress="handleEditBtnPress"	upperCaseAnchorBar="false" >      
@@ -26,9 +26,11 @@
 					
                     	<ux:expandedContent>
 						<Toolbar >
+						
 					<Text text="{main>desig}"/>					
 						<ToolbarSpacer/>
 					  <Button text="Notification" icon="sap-icon://bell" press="onNotification"></Button>
+					   <Button text="Logout" icon="sap-icon://log" press="onLogout"></Button>
 					</Toolbar>
 				</ux:expandedContent>
 

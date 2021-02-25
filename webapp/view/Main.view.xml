@@ -5,6 +5,7 @@
     xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
 >
 	<Shell id="shell">
 		<App id="app">
@@ -22,6 +23,7 @@
 			</VBox>
 			
 			</l:VerticalLayout>
+		
 					</content>
 					
 				</Page>

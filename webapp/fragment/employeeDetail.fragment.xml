@@ -1,0 +1,60 @@
+<core:FragmentDefinition xmlns="sap.m"	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" 	xmlns:f="sap.ui.layout.form">
+<!-- <Dialog id="idDialogS67" showHeader="true" title="Request Form" > -->
+
+<HBox>
+<VBox>
+<Text  class="sapUiMediumMarginBegin"  text="Employee ID"></Text>
+
+  <ComboBox  items="{main>/AssetsAlloted}" class="sapUiMediumMarginBegin" placeholder="filter with Employee ID" change="onfilterEmpID">
+							<items>
+								<core:Item key="{main>empId}" text="{main>empId}"/>
+							</items>
+						</ComboBox>
+                        </VBox>
+
+                        <VBox>
+<Text  class="sapUiMediumMarginBegin"  text="Employee Name"></Text>
+  <ComboBox  items="{main>/AssetsAlloted}"  class="sapUiMediumMarginBegin" placeholder="filter with Employee Name" change="onfilterEpName">
+							<items>
+								<core:Item key="{main>empName}" text="{main>empName}"/>
+							</items>
+						</ComboBox>
+                        </VBox>
+</HBox>
+<Table headerText="Details of Employees" class="sapUiMediumMarginTop" id="exportTable" items="{main>/AssetsAlloted}">
+<headerToolbar>
+                  	<OverflowToolbar width="auto" height="27px" design="Transparent" visible="true" enabled="true">
+                      	<content>
+						  <Label text="Details of Employees"></Label>
+                        	<ToolbarSpacer width=""/>
+                          	<OverflowToolbarButton id="clearTabFilters" type="Transparent" visible="true" icon="sap-icon://clear-filter" iconFirst="true" width="auto" enabled="true" tooltip="Clear All Filters" iconDensityAware="false"  press="clearTableFilters"/>                                                          
+                          	<OverflowToolbarButton type="Transparent" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" tooltip="Download Table Data" iconDensityAware="false"  press="empTableExport"/>
+                      	</content>
+                  	</OverflowToolbar>
+              	</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="Employee ID"></Text>
+							</Column>
+							<Column>
+								<Text text="Employee Name"></Text>
+							</Column>
+							<Column>
+								<Text text="Assigned Assets"></Text>
+							</Column>
+							
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{main>empId}"></Text>
+									<Text text="{main>empName}"></Text>
+									<Button text="show" press="onShow"></Button>
+								
+									<!--<Text text="{Aworg}"></Text>-->
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+<!-- </Dialog> -->
+</core:FragmentDefinition>
