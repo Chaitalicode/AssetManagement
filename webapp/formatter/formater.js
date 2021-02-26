@@ -10,6 +10,9 @@ sap.ui.define([],function(){
 			else{
 				return "Error";
 			}
+		},
+		StatusState1:function(iPrice){
+			debugger;
 		}
 	};
 });

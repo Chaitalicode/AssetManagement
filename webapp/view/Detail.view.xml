@@ -15,6 +15,9 @@
 <VBox id="2nd" visible="false">
 <core:Fragment fragmentName="am.assetmanagment.fragment.assetDetail" type="XML" ></core:Fragment>
 </VBox>
+<VBox id="3rd" visible="false">
+<core:Fragment fragmentName="am.assetmanagment.fragment.expenses" type="XML" ></core:Fragment>
+</VBox>
 </content>
 </Page>
 </mvc:View>

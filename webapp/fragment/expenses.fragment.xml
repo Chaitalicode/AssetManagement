@@ -1,0 +1,79 @@
+<core:FragmentDefinition xmlns="sap.m"	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" 	xmlns:f="sap.ui.layout.form">
+
+<Table id="idAssetTable"
+		inset="false"
+		items="{
+			path: 'main>/Assets_Details'
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Expenses" level="H2"/>
+					<ToolbarSpacer />
+					<!-- <ComboBox id="idPopinLayout"
+						placeholder="Assets by Year"
+						change="onPopinLayoutChanged" selectionChange="onComboYear">
+        
+						<items>
+							<core:Item id="xyzs" text="2018" key="2018"/>
+                            <core:Item id="xyz1" text="2019" key="2019"/>
+                            <core:Item id="xyz2" text="2020" key="2020"/>
+						</items>
+					</ComboBox> -->
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Assets with the Vendor Details"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Assest Name" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Assest Type" />
+			</Column>
+			<Column
+				hAlign="Center">
+				<Text text="Assest Cost" />
+			</Column>
+            <Column
+				hAlign="End">
+				<Text text="Quantity" />
+			</Column>
+             <Column
+				hAlign="End">
+				<Text text="Total Cost" />
+			</Column>
+			
+           
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+                   
+                    <Text
+						text="{main>item_name}" />
+					<Text
+						text="{main>item_type}" />
+					<Text
+						text="{main>item_cost}" />
+                    <Text
+						text="{main>quantity}" />
+                     <Text
+						text="parts: [{path: 'quantity'},{path: 'lastName'}], formatter:'.formater.StatusState1'" />
+                   
+                    
+					
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table> 
+</core:FragmentDefinition>

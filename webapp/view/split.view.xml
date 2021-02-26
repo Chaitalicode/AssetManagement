@@ -9,8 +9,12 @@
     height="100%"
 >
     <App>
-		<f:FlexibleColumnLayout 
-			id="idAppControl"
-			layout="{flexibleLayout>/layout}"	/>
+    <pages>
+<Page>
+ <content>      
+		            <f:FlexibleColumnLayout id="idAppControl" layout="{flexibleLayout>/layout}"	/>                            
+ </content>
+</Page>
+</pages>
 	</App>
 </mvc:View>
