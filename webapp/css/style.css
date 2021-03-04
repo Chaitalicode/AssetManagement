@@ -1,1 +1,10 @@
 /* Enter your custom styles here */
+.page1 .sapMTitle {
+    left:550px;
+}
+
+.sapMIBar-CTX .sapMTitle {
+    color: aqua;
+    text-shadow: none;
+    font-weight: bold;
+}

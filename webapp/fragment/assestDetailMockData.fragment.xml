@@ -1,0 +1,190 @@
+<core:FragmentDefinition xmlns="sap.m"  xmlns:ui="sap.ui.table"	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" 	xmlns:f="sap.ui.layout.form">
+<!-- <Dialog id="idDialogS67" showHeader="true" title="Request Form" > -->
+	<ui:Table rows="{/Assets_Details}"
+				id="uiTableID1"
+				visibleRowCount="7"
+				paste="onPaste"
+				ariaLabelledBy="title">
+                <ui:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="title" text="Products"/>
+                        <ToolbarSpacer/>
+                        <ComboBox id="idPopinLayout"
+						placeholder="Assets by Year"
+						change="onPopinLayoutChanged" selectionChange="onComboYear">
+        
+						<items>
+							<core:Item id="xyzs" text="2018" key="2018"/>
+                            <core:Item id="xyz1" text="2019" key="2019"/>
+                            <core:Item id="xyz2" text="2020" key="2020"/>
+						</items>
+					</ComboBox>
+					</OverflowToolbar>
+				</ui:extension>
+
+                	<ui:columns>
+					<ui:Column width="11rem">
+						<Label text="Assest Id" />
+						<ui:template>
+							<Text text="{item_id}" wrapping="false" />
+						</ui:template>
+					</ui:Column>
+					<ui:Column width="11rem">
+						<Label text="Assest Name" />
+						<ui:template>
+							<Input value="{item_name}"/>
+						</ui:template>
+					</ui:Column>
+					<ui:Column width="11rem">
+						<Label text="Assest Name" />
+						<ui:template>
+							<Input value="{year}"/>
+						</ui:template>
+					</ui:Column>
+                    <!-- <ui:Column width="11rem">
+						<Label text="Assest Type" />
+						<ui:template>
+							<Input value="{main>item_type}"/>
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Assest Cost" />
+						<ui:template>
+							<Input value="{main>item_cost}"/>
+						</ui:template>
+					</ui:Column>
+                    <ui:Column width="11rem">
+						<Label text="Quantity" />
+						<ui:template>
+							<Input value="{main>quantity}"/>
+						</ui:template>
+					</ui:Column>
+                     <ui:Column width="11rem">
+						<Label text="Vendor Name" />
+						<ui:template>
+							<Input value="{main>Vendor_Name}"/>
+						</ui:template>
+					</ui:Column>
+                      <ui:Column width="11rem">
+						<Label text="Vendor Email" />
+						<ui:template>
+							<Input value="{main>Vendor_Eml}"/>
+						</ui:template>
+					</ui:Column>
+                     <ui:Column width="11rem">
+						<Label text="Vendor Phone" />
+						<ui:template>
+							<Input value="{main>Vedor_phone}"/>
+						</ui:template>
+					</ui:Column>
+                      <ui:Column width="11rem">
+						<Label text="Purchase Date from Vendor" />
+						<ui:template>
+							<Input value="{main>date_purchase}"/>
+						</ui:template>
+					</ui:Column> -->
+                </ui:columns>
+                </ui:Table>
+				
+	<!-- <Table id="idAssetTable"
+		inset="false"
+		items="{
+			path: 'main>/Assets_Details'
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Assets" level="H2"/>
+					<ToolbarSpacer />
+					<ComboBox id="idPopinLayout"
+						placeholder="Assets by Year"
+						change="onPopinLayoutChanged" selectionChange="onComboYear">
+        
+						<items>
+							<core:Item id="xyzs" text="2018" key="2018"/>
+                            <core:Item id="xyz1" text="2019" key="2019"/>
+                            <core:Item id="xyz2" text="2020" key="2020"/>
+						</items>
+					</ComboBox>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Assets with the Vendor Details"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Assest Id" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Assest Name" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Assest Type" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Assest Cost" />
+			</Column>
+            <Column
+				hAlign="End">
+				<Text text="Quantity" />
+			</Column>
+			<Column
+				hAlign="End">
+				<Text text="Vendor Name" />
+			</Column>
+            <Column
+				hAlign="End">
+				<Text text="Vendor Email" />
+			</Column>
+            <Column
+				hAlign="End">
+				<Text text="Vendor Phone" />
+			</Column>
+            <Column minScreenWidth="Desktop"
+				demandPopin="true"
+			
+				hAlign="End">
+				<Text text="Purchase Date from Vendor" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+                    <Text
+						text="{main>item_id}" />
+                    <Text
+						text="{main>item_name}" />
+					<Text
+						text="{main>item_type}" />
+					<Text
+						text="{main>item_cost}" />
+                    <Text
+						text="{main>quantity}" />
+                    <Text
+						text="{main>Vendor_Name}" />
+                    <Text
+						text="{main>Vendor_Eml}" />
+                    <Text
+						text="{main>Vedor_phone}" />
+                    <Text
+						text="{main>date_purchase}" />
+                    
+					
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table> -->
+<!-- </Dialog> -->
+</core:FragmentDefinition>

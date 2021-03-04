@@ -1,0 +1,265 @@
+<core:FragmentDefinition xmlns="sap.m"  xmlns:ui="sap.ui.table"	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" 	xmlns:f="sap.ui.layout.form">
+<!-- <Dialog id="idDialogS67" showHeader="true" title="Request Form" > -->
+
+	<IconTabBar
+		id="idIconTabBar"
+		select=".onFilterSelect"
+		class="sapUiResponsiveContentPadding">
+        	<items>
+            <IconTabFilter	icon="sap-icon://begin"	iconColor="Positive" text="New Assets Requests"	key="New" >
+            <Table id="empReqFrNew"
+		inset="false"
+		items="{
+			path: 'main>/EmpFrag'
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="New Assets" level="H2"/>
+					<ToolbarSpacer />
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Requests for New Assests"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Employee Id" />
+			</Column>
+            <Column
+				width="12em">
+				<Text text="Employee Name" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Requested Date" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Requested Assest" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Status" />
+			</Column>
+            <Column
+				hAlign="End">
+				<Text text="Reason" />
+			</Column>
+		
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+                    <Text
+						text="{main>empID}" />
+                    <Text
+						text="{main>name}" />
+                    <Text
+						text="{main>empDate}" />
+					<Text
+						text="{main>nwItem}" />
+					<Text
+						text="{main>status}" />
+                    <Text
+						text="{main>txtArea}" />	
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table> 
+             </IconTabFilter>
+			<IconTabFilter
+				icon="sap-icon://compare"
+				iconColor="Critical"
+				text="Old Assets Requests"
+				key="Old" >
+
+				 <Table id="empReqFrOld"
+		inset="false"
+		items="{
+			path: 'dymcModel>/OldAssestReq'
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Old Assets" level="H2"/>
+					<ToolbarSpacer />
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Requests for Old Assests"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Employee Id" />
+			</Column>
+            <Column
+				width="12em">
+				<Text text="Employee Name" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Assest ID" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Assest Name" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Status" />
+			</Column>
+            <Column
+				hAlign="End">
+				<Text text="Reason" />
+			</Column>
+		 <Column
+				hAlign="End">
+				<Text text="Attachments" />
+			</Column>
+		
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+                    <Text
+						text="{dymcModel>empId}" />
+                    <Text
+						text="{dymcModel>empName}" />
+                    <Text
+						text="{dymcModel>asstId}" />
+					<Text
+						text="{dymcModel>asstNm}" />
+					<Text
+						text="{dymcModel>status}" />
+                    <Text
+						text="{dymcModel>reason}" />	
+					
+				<Link href="{dymcModel>img}" text="Download"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table> 
+	</IconTabFilter>
+            	</items>
+        	</IconTabBar>
+	
+	<!-- <Table id="idAssetTable"
+		inset="false"
+		items="{
+			path: 'main>/Assets_Details'
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Assets" level="H2"/>
+					<ToolbarSpacer />
+					<ComboBox id="idPopinLayout"
+						placeholder="Assets by Year"
+						change="onPopinLayoutChanged" selectionChange="onComboYear">
+        
+						<items>
+							<core:Item id="xyzs" text="2018" key="2018"/>
+                            <core:Item id="xyz1" text="2019" key="2019"/>
+                            <core:Item id="xyz2" text="2020" key="2020"/>
+						</items>
+					</ComboBox>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Assets with the Vendor Details"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Assest Id" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Assest Name" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Assest Type" />
+			</Column>
+			<Column
+				minScreenWidth="Desktop"
+				demandPopin="true"
+				hAlign="Center">
+				<Text text="Assest Cost" />
+			</Column>
+            <Column
+				hAlign="End">
+				<Text text="Quantity" />
+			</Column>
+			<Column
+				hAlign="End">
+				<Text text="Vendor Name" />
+			</Column>
+            <Column
+				hAlign="End">
+				<Text text="Vendor Email" />
+			</Column>
+            <Column
+				hAlign="End">
+				<Text text="Vendor Phone" />
+			</Column>
+            <Column minScreenWidth="Desktop"
+				demandPopin="true"
+			
+				hAlign="End">
+				<Text text="Purchase Date from Vendor" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+                    <Text
+						text="{main>item_id}" />
+                    <Text
+						text="{main>item_name}" />
+					<Text
+						text="{main>item_type}" />
+					<Text
+						text="{main>item_cost}" />
+                    <Text
+						text="{main>quantity}" />
+                    <Text
+						text="{main>Vendor_Name}" />
+                    <Text
+						text="{main>Vendor_Eml}" />
+                    <Text
+						text="{main>Vedor_phone}" />
+                    <Text
+						text="{main>date_purchase}" />
+                    
+					
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table> -->
+<!-- </Dialog> -->
+</core:FragmentDefinition>

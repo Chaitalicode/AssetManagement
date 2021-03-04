@@ -7,10 +7,10 @@
 	xmlns:f="sap.f"
 	xmlns:core="sap.ui.core"
 >
-	<Shell id="shell">
-		<App id="app">
-			<pages>
-				<Page id="page" title="{i18n>title}">
+	<!-- <Shell id="shell"> -->
+		<!-- <App id="app">
+			<pages> -->
+				<Page class="page1" title="{i18n>title}">
 					<content> 
 						
 			
@@ -18,8 +18,8 @@
 			
 			<VBox class="sapUiLargeMarginTop" alignItems="Center" alignContent="Center" >
 			<Input width="250px" id="emlId" placeholder="{i18n>email}"></Input>
-			<Input width="250px" id="pwdId" placeholder="{i18n>password}"></Input>
-			<Button text="{i18n>Login}" press="onLogin"></Button>
+			<Input width="250px" id="pwdId" type="Password" placeholder="{i18n>password}"></Input>
+			<Button text="{i18n>Login}" press="onLogin" type="Accept"></Button>
 			</VBox>
 			
 			</l:VerticalLayout>
@@ -27,7 +27,7 @@
 					</content>
 					
 				</Page>
-			</pages>
-		</App>
-	</Shell>
+			<!-- </pages>
+		</App> -->
+	<!-- </Shell> -->
 </mvc:View>

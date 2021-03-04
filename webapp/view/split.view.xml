@@ -9,12 +9,12 @@
     height="100%"
 >
     <App>
-    <pages>
-<Page>
+    <pages> 
+ <Page title="Flexible column latout" showHeader="false">
  <content>      
-		            <f:FlexibleColumnLayout id="idAppControl" layout="{flexibleLayout>/layout}"	/>                            
+		<f:FlexibleColumnLayout id="idAppControl" layout="{flexibleLayout>/layout}"	/>                            
  </content>
-</Page>
-</pages>
+</Page> 
+ </pages>
 	</App>
 </mvc:View>

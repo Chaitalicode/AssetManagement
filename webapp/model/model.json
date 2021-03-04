@@ -1,11 +1,10 @@
 {
-  "EmployeeDetails":
-    [{
+  "EmployeeDetails": [{
         "empid":"101",
         "fName":"Chaitali",
         "lName":"Pandya",
-        "desig":"Junior UI5 and Fiori Developer",
-        "description":"Hello! I am Chaitali and I am Junior SAP UI5 Consultant",
+        "desig":"Junior UI5 and Fiori Consultant",
+        "description":"Myself,Chaitali Pandya. Expertise in UI5, Fiori, OData and CDS",
         "email":"chaitali@signiwis.com",
         "psw":"chaitali",
         "Paddr":"1745/Mission Street",
@@ -16,8 +15,10 @@
         "city":"Udaipur",
         "phone":"7014522493",
         "state":"Rajasthan",
-        "linkedIn":"/Chaitali",
-        "twitter":"@Chaitali"
+        "linkedIn":"https://www.linkedin.com/in/chaitali-p-b8a456676",
+        "twitter":"@ChaitaliPandya17",
+        "goals":"60%",
+        "imgEmp":"https://professionalwomanmag.com/wp-content/uploads/2018/05/business-woman.jpg"
     },
     {
         "empid":"102",
@@ -25,7 +26,7 @@
         "lName":"Bothra",
         "desig":"ABAP Consultant",
         "email":"gaurav@signiwis.com",
-        "description":"Hello! I am Gaurav and I am Senior ABAP Consultant",
+        "description":"Hello! I am Gaurav Bothra. Expertise in ABAP and OABAP",
         "psw":"gaurav",
         "Paddr":"Vijay Nagar",
         "Caddr":"345/Gayatrinagar,mangal colony",
@@ -35,8 +36,10 @@
         "city":"Delhi",
         "phone":"8988423493",
         "state":"Delhi",
-        "linkedIn":"/Chaitali",
-        "twitter":"@Chaitali"
+        "linkedIn":"https://www.linkedin.com/in/gaurav-b-Y8990ASR",
+        "twitter":"@GauravBothra38473",
+        "goals":"70%",
+        "imgEmp":"https://ath2.unileverservices.com/wp-content/uploads/sites/3/2017/09/professional-mens-hairstyles-combed-min-1024x683.jpg"
     },
     {
         "empid":"103",
@@ -54,8 +57,11 @@
         "city":"Kolkata",
         "phone":"8989233456",
         "state":"West Bengal",
-        "linkedIn":"/Chaitali",
-        "twitter":"@Chaitali"
+        "linkedIn":"https://www.linkedin.com/in/anurag-c-H383484A",
+        "twitter":"@AnuragC456703",
+        "goals":"65%",
+        "imgEmp":"https://images.unsplash.com/photo-1561677843-39dee7a319ca?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmVzc2lvbmFsJTIwbWFufGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80"
+      
     }],
     "AssetsAlloted":[
         {
@@ -102,7 +108,8 @@
                     "DOA":"17-Oct-2019",
                     "status":"Completed"
                 }
-            ]
+            ],
+            "requests":[]
         },
         {
             "empId":"102",
@@ -148,7 +155,8 @@
                     "DOA":"23-Jan-2019",
                     "status":"Completed"
                 }
-            ]
+            ],
+            "requests":[]
         },
         {
             "empId":"103",
@@ -194,7 +202,8 @@
                     "DOA":"17-Oct-2019",
                     "status":"Completed"
                 }
-            ]
+            ],
+            "requests":[]
         }
     ],
 

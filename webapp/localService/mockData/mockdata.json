@@ -1,0 +1,73 @@
+[
+    {
+    "item_id":"MAC10012A",
+    "item_name":"MacBook Air",
+    "item_type":"Laptop",
+    "item_cost":"80000",
+    "Vendor_Name":"Dipesh",
+    "Vendor_Eml":"dipesh@gmail.com",
+    "Vedor_phone":"7089345672",
+    "date_purchase":"05-10-2018",
+    "quantity":"15",
+    "year":"2018"
+},
+{
+    "item_id":"MAC46CHARGER",
+    "item_name":"Charger of MacBook Air ",
+    "item_type":"Charger",
+    "item_cost":"1000",
+    "Vendor_Name":"Dipesh",
+    "Vendor_Eml":"dipesh@gmail.com",
+    "Vedor_phone":"7089345672",
+    "date_purchase":"05-10-2018",
+    "quantity":"15",
+    "year":"2018"
+},
+{
+    "item_id":"MAC105689S",
+    "item_name":"Dell",
+    "item_type":"Laptop",
+    "item_cost":"35000",
+    "Vendor_Name":"Dipesh",
+    "Vendor_Eml":"dipesh@gmail.com",
+    "Vedor_phone":"7089345672",
+    "date_purchase":"05-10-2018",
+    "quantity":"15",
+    "year":"2018"
+},
+{
+    "item_id":"DELL688CHGR",
+    "item_name":"Dell",
+    "item_type":"Charger",
+    "item_cost":"500",
+    "Vendor_Name":"Dipesh",
+    "Vendor_Eml":"dipesh@gmail.com",
+    "Vedor_phone":"7089345672",
+    "date_purchase":"05-10-2018",
+    "quantity":"15",
+    "year":"2018"
+},
+{
+    "item_id":"MTY567IB",
+    "item_name":"Dell",
+    "item_type":"Laptop",
+    "item_cost":"35000",
+    "Vendor_Name":"Dipesh",
+    "Vendor_Eml":"piyush@gmail.com",
+    "Vedor_phone":"7089345672",
+    "date_purchase":"05-10-2019",
+    "quantity":"15",
+    "year":"2019"
+},
+{
+    "item_id":"MAC10012A",
+    "item_name":"Dell",
+    "item_type":"Laptop",
+    "item_cost":"35000",
+    "Vendor_Name":"Dipesh",
+    "Vendor_Eml":"piyush@gmail.com",
+    "Vedor_phone":"7089345672",
+    "date_purchase":"05-10-2019",
+    "quantity":"15",
+    "year":"2019"
+}]

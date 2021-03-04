@@ -27,7 +27,7 @@
                       	<content>
 						  <Label text="Details of Employees"></Label>
                         	<ToolbarSpacer width=""/>
-                          	<OverflowToolbarButton id="clearTabFilters" type="Transparent" visible="true" icon="sap-icon://clear-filter" iconFirst="true" width="auto" enabled="true" tooltip="Clear All Filters" iconDensityAware="false"  press="clearTableFilters"/>                                                          
+                          	<!-- <OverflowToolbarButton id="clearTabFilters" type="Transparent" visible="true" icon="sap-icon://clear-filter" iconFirst="true" width="auto" enabled="true" tooltip="Clear All Filters" iconDensityAware="false"  press="clearTableFilters"/>                                                           -->
                           	<OverflowToolbarButton type="Transparent" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" tooltip="Download Table Data" iconDensityAware="false"  press="empTableExport"/>
                       	</content>
                   	</OverflowToolbar>

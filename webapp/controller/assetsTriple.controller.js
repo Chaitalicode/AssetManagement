@@ -61,6 +61,7 @@ sap.ui.define([
 
 		empTableExport1:function(oEv){
 			debugger;
+			var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
 			var aCols, aProducts, oSettings, oSheet;
 			aCols = this.createColumnConfig();
 			var sTitl = this.getView().byId("objId").getTitle();
@@ -75,7 +76,7 @@ sap.ui.define([
 			oSheet = new Spreadsheet(oSettings);
 			oSheet.build()
 				.then( function() {
-					MessageToast.show('Spreadsheet export has finished');
+					MessageToast.show(oResourceBundle.getText("Spredsheet_exported"));
 				})
 				.finally(oSheet.destroy);
 		}
