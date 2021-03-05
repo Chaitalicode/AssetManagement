@@ -11,11 +11,7 @@ sap.ui.define([
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 
 		},
-        onNav:function(){
-
-            this.getOwnerComponent().getModel("flexibleLayout").setProperty("/layout","OneColumn");
-            this.oRouter.navTo("RouteMain");
-        },
+        
 
         onList:function(oEv){
             debugger;

@@ -15,6 +15,7 @@
 		"build": "ui5 build -a --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
 		"deploy": "fiori add deploy-config",
 		"unit-tests": "fiori run --open test/unit/unitTests.qunit.html",
+		"mockserver": "fiori run --open test/mockServer.html",
 		"int-tests": "fiori run --open test/integration/opaTests.qunit.html"
 	},
 	"devDependencies": {

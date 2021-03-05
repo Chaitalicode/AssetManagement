@@ -13,24 +13,24 @@
     height="100%"
 >
 
-	<Shell id="shellI">
+	
 		<App id="appEmp">
 			<pages>
 				<Page id="page" showHeader="false"  showNavButton="true" navButtonPress="onNav"  title="{i18n>title}">
 					<content> 
 	
-				<ux:ObjectPageLayout id="ObjectPageLayout"	showTitleInHeaderContent="true"	showEditHeaderButton="true"	editHeaderButtonPress="handleEditBtnPress"	upperCaseAnchorBar="false" >      
+				<ux:ObjectPageLayout id="ObjectPageLayout" sectionTitleLevel="H1" preserveHeaderStateOnScroll="true"	showTitleInHeaderContent="true"	showEditHeaderButton="true"	editHeaderButtonPress="handleEditBtnPress"	upperCaseAnchorBar="false" >      
 
             <ux:headerTitle>
-		    	<ux:ObjectPageDynamicHeaderTitle>
+		    	<ux:ObjectPageDynamicHeaderTitle areaShrinkRatio="1:1.6:1.6">
 					
                     	<ux:expandedContent>
-						<Toolbar >
+						<Toolbar style="Clear">
 						
-					<Text text="{main>desig}"/>					
-						<ToolbarSpacer/>
-					  <Button text="Notification" icon="sap-icon://bell" press="onNotification"></Button>
-					   <Button text="Logout" icon="sap-icon://log" press="onLogout"></Button>
+					<!-- <Text text="{main>desig}"/>					 -->
+						<ToolbarSpacer />
+					  <Button text="{main>/EmpNotfCount/contHr}" icon="sap-icon://bell" press="onEmpNotification" type="Accept"></Button>
+					   <Button text="Logout" icon="sap-icon://log" press="onLogout" type="Emphasized"></Button>
 					</Toolbar>
 				</ux:expandedContent>
 
@@ -40,41 +40,60 @@
     <ux:headerContent>
 		<FlexBox wrap="Wrap">
 				
-	        <Avatar class="sapUiSmallMarginEnd" src="https://4.bp.blogspot.com/-3giIUKzKAPs/WpuZ7HDYCGI/AAAAAAAADXE/x2vNiOPZzJcYC_AnKTBgy2Vw7wXi5cD7wCLcBGAs/s1600/professional-woman-photo.jpg"  displaySize="L" />
+	        <Avatar class="sapUiSmallMarginEnd" src="{main>imgEmp}"  displaySize="XL" />
 					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-						<Link text="91+ {main>phone}"/>
-						<Link text="{main>email}"/>
+					<HBox >
+					<Label text="Name: " class="sapUiSmallMarginEnd"></Label>
+					<Label design="Bold" text="{main>fName} {main>lName}"></Label>
+					</HBox>
+					<HBox >
+					<Label text="Email: " class="sapUiSmallMarginEnd"></Label>
+					<Label design="Bold" text="{main>email}"></Label>
+					</HBox>
+					<HBox >
+					<Label text="Designation: " class="sapUiSmallMarginEnd"></Label>
+					<Label design="Bold" text="{main>desig}"></Label>
+					</HBox>
+					
 					</layout:VerticalLayout>
 
 				
 
 				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<Label text="{main>description}"/>
-					<VBox>
-						<Label text="Achieved goals"/>
-						<ProgressIndicator percentValue="30" displayValue="30%"/>
-					</VBox>
+					
+					<HBox >
+					<Label text="Description: " class="sapUiSmallMarginEnd"></Label>
+					<Label design="Bold"  text="{main>description}"></Label>
+					</HBox>
+
+					<HBox >
+					<Label text="Place: " class="sapUiSmallMarginEnd"></Label>
+					<Label design="Bold"  text="{main>city} , {main>state}"></Label>
+					</HBox>
+					
+					<Label text="Achieved goals: "/>
+					<ProgressIndicator percentValue="{main>goals}" displayValue="{main>goals}"/>
+					
+					
 				</layout:VerticalLayout>
 
-				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-					<Label text="{main>city} , {main>state}"/>
-				</layout:VerticalLayout>
+				
 		</FlexBox>
 	</ux:headerContent>
 
     
     <ux:sections>
-			<ux:ObjectPageSection titleUppercase="false" id="perslnalSection" title="Personal Information">
+			<ux:ObjectPageSection titleUppercase="false" id="perslnalSection" title="Personal Information" importance="High" titleLevel="H1">
                 <ux:subSections>
-                    <ux:ObjectPageSubSection id="goalsSectionSS1">
+                    <ux:ObjectPageSubSection titleLevel="H1" id="goalsSectionSS1">
 	                   <ux:blocks>
                   		<forms:SimpleForm layout="ColumnLayout"  width="50%">                               
 		                  <core:Title text="Address"/>
 
 		                  <Label text="Home Address"/>
-		                  <Text text="{main>Paddr}"/>
+		                  <Text  text="{main>Paddr}" class="sapUiSmallMarginEnd"/>
 
-                          <Label text="Current Address" class="sapUiSmallMarginBeginBegin"/>
+                          <Label text="Current Address" class="sapUiSmallMarginEnd"/>
 		                  <Text text="{main>Caddr}"/>
      
 
@@ -112,11 +131,11 @@
 
             <!-- .................. -->
 
-           <ux:ObjectPageSection titleUppercase="false"  title="Assest">
+           <ux:ObjectPageSection titleUppercase="false" titleLevel="H1" title="Assest">
                	<ux:subSections>
 					<ux:ObjectPageSubSection id="AssestSectionSS1">
 						<ux:blocks>
-                        	<Table id="idAssetTable" inset="false">
+                        	<Table id="idAssetTable1" >
         	<columns>
 			<Column
 				width="12em">
@@ -168,9 +187,44 @@
 				</ux:subSections>
            </ux:ObjectPageSection>
 
-
-
-
+<!--  -->
+		 <ux:ObjectPageSection titleUppercase="false" titleLevel="H1"  title="Requests">
+               	<ux:subSections>
+					<ux:ObjectPageSubSection id="RequestID">
+						<ux:blocks>
+         <VBox >               	
+	<List id="reqID" headerText="Your Assets Request" showNoData="true">
+		<!-- <ObjectListItem
+			title="{main>empID}"
+			type="Active"
+			press="onListItemPress" >
+			<firstStatus>
+				<ObjectStatus
+					text="{main>status}" />
+			</firstStatus>
+			<ObjectAttribute text="{main>txtArea}" />
+			
+		</ObjectListItem> -->
+	</List>
+	<List id="OldAsstId" headerText="Requests for Old Assests" showNoData="true">
+		<!-- <ObjectListItem
+			title="{main>empID}"
+			type="Active"
+			press="onListItemPress" >
+			<firstStatus>
+				<ObjectStatus
+					text="{main>status}" />
+			</firstStatus>
+			<ObjectAttribute text="{main>txtArea}" />
+			
+		</ObjectListItem> -->
+	</List>
+</VBox>
+						
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+           </ux:ObjectPageSection>
         </ux:sections>
 			
         </ux:ObjectPageLayout>				
@@ -178,12 +232,12 @@
 				<footer>
 			         <OverflowToolbar>
 			         <ToolbarSpacer />
-			         <Button type="Accept" text="Raise Ticket" press="onRaiseTicket"/>
+			         <Button type="Reject" text="Raise Ticket" class="sapUiSmallMarginEnd" press="onRaiseTicket"/>		 
 				   
 			         </OverflowToolbar>
 		       </footer>	
 				</Page>
 			</pages>
 		</App>
-	</Shell>
+	<!-- </Shell> -->
 </mvc:View>

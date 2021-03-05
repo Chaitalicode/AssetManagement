@@ -6,7 +6,7 @@
 	height="100%"
 	busyIndicatorDelay="0"
 >
-<Page title="Master" navButtonPress="onNav" showNavButton="true">
+<Page title="Master" >
 <content>
 <List items="{main>/Masterlist}" >
 	<ObjectListItem type="Navigation" press="onList" intro="{main>name}"></ObjectListItem>

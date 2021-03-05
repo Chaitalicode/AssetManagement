@@ -23,7 +23,16 @@ sap.ui.define([
 				if(email === "123" && pwd === "123"){
 					this.getOwnerComponent().getModel("flexibleLayout").setProperty("/layout","TwoColumnsMidExpanded");
 					this.oRouter.navTo("split");
-					
+					this.getView().byId("emlId").setValueState("None");
+						this.getView().byId("pwdId").setValueState("None");
+						this.getView().byId("emlId").setValue("");
+						this.getView().byId("pwdId").setValue("");
+				}
+
+				else if(!email || !pwd){
+				this.getView().byId("emlId").setValueState("Error");
+				this.getView().byId("pwdId").setValueState("Error");
+				MessageToast.show(oResourceBundle.getText("Enter_Credentials"));
 				}
 
 				else if(oJsonM instanceof Array){
@@ -35,11 +44,20 @@ sap.ui.define([
 						this.oRouter.navTo("Employee", {
 							empID: nIdx
 						});
+						this.getView().byId("emlId").setValueState("None");
+						this.getView().byId("pwdId").setValueState("None");
+						this.getView().byId("emlId").setValue("");
+						this.getView().byId("pwdId").setValue("");
 					   return;
 					}	
-					else{
+					else if (JData.email != email && JData.psw != pwd) {
+						this.getView().byId("emlId").setValueState("Error");
+						this.getView().byId("pwdId").setValueState("Error");
 						MessageToast.show(oResourceBundle.getText("Invalid_Credentials"));
-					}				
+					}
+					// else{
+					// 	MessageToast.show(oResourceBundle.getText("Invalid_Credentials"));
+					// }				
 				}
 			}
 			

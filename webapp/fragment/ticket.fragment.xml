@@ -5,6 +5,9 @@
             <Label></Label>
 			<Label text="Employee Id"></Label>
 			<Input id="id" width="100%" editable="false"></Input>
+			<Label text="Employee Name"></Label>
+			<Input id="name" width="100%" editable="false"></Input>
+			
 			<Label text="Datepicker"></Label>
 			<DatePicker id="dateId"  value="" width="100%" ></DatePicker>
 			<Label text="Select Type"></Label>
@@ -39,7 +42,10 @@
 			<Label text="Asset Name"></Label>
 			<Input id="asstNm" width="100%"></Input>
            
-			<HBox>
+		   <HBox class="sapUiSmallMarginEnd">
+						<MessageStrip type="Warning" text="Upload a maximum of 1 PDF or PNG file type (Total size allowed is 300kb)"></MessageStrip>
+			</HBox>
+			<HBox class="sapUiSmallMarginTop">
 				<VBox class="vBox3style">
 						<Label text="Attachments"></Label>
 							<HBox>
@@ -48,16 +54,21 @@
 							</HBox>
 				</VBox>
 			</HBox>
+			
 					<HBox>
 						<VBox class="vBox3style">
 							<Label text="List of attachments"></Label>
-							<UploadCollection id="upldCollId" uploadButtonInvisible="true" items="{loginModel>/Login/file}">
+							<UploadCollection id="upldCollId" uploadButtonInvisible="true" items="{main>/AssetsAlloted/file}">
 								<items>
-									<UploadCollectionItem id="upldItemId" visibleEdit="false" enableDelete="true" deletePress="onDelete" fileName="{loginModel>filename}"
-										url="{loginModel>file}" press="onDownload" ></UploadCollectionItem>
+									<UploadCollectionItem id="upldItemId" visibleEdit="false" enableDelete="true" deletePress="onDelete" fileName="{main>filename}"
+										url="{main>file}" press="onDownload" ></UploadCollectionItem>
 								</items>
 							</UploadCollection>
 						</VBox>
+					</HBox>
+					
+					<HBox class="hBox1style" id="idMssgStrip" visible="false">
+						<MessageStrip type="Error" text="Please select files of total size less than 300kb"></MessageStrip>
 					</HBox>
 			    <Label text="Reason" required="true"></Label>
 			    <TextArea id="oldtxtID"  liveChange="onTextArea" width="100%" maxLength="20"	showExceededText="true"  valueStateText="Exceeding More than Limit"></TextArea>

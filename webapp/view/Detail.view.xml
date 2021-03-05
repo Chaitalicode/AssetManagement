@@ -7,13 +7,25 @@
 	height="100%"
 	busyIndicatorDelay="0"
 >
-<Page title="Detail">
+<Page title="Detail" showHeader="true">
+<headerContent>
+<Button text="Logout" press="onLog"></Button>
+    <Button icon="sap-icon://bell" text="{dymcModel>/hrNotfCount/contHr}" press="onNotification"></Button>
+</headerContent>
 <content>
+
 <VBox id="1st" visible="false">
 <core:Fragment fragmentName="am.assetmanagment.fragment.employeeDetail" type="XML" ></core:Fragment>
 </VBox>
 <VBox id="2nd" visible="false">
 <core:Fragment fragmentName="am.assetmanagment.fragment.assetDetail" type="XML" ></core:Fragment>
+<!-- <core:Fragment fragmentName="am.assetmanagment.fragment.assestDetailMockData" type="XML" ></core:Fragment> -->
+</VBox>
+<VBox id="3rd" visible="false">
+<core:Fragment fragmentName="am.assetmanagment.fragment.expenses" type="XML" ></core:Fragment>
+</VBox>
+<VBox id="4th" visible="false">
+<core:Fragment fragmentName="am.assetmanagment.fragment.requests" type="XML" ></core:Fragment>
 </VBox>
 </content>
 </Page>

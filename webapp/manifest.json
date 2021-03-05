@@ -10,7 +10,16 @@
     "title": "",
     "description": "",
     "resources": "resources.json",
-    "ach": "ach"
+    "ach": "ach",
+    "dataSources": {
+			"ZCHPRO_SRV": {
+				"uri": "/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
   },
   "sap.ui": {
     "technology": "UI5",
@@ -40,6 +49,7 @@
     "dependencies": {
       "minUI5Version": "1.66.0",
       "libs": {
+        "sap.f":{},
         "sap.ui.core": {},
         "sap.m": {},
         "sap.ui.layout": {}
@@ -59,6 +69,11 @@
       "main":{
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/model.json"
+      },
+      "":{
+        "type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "ZCHPRO_SRV",
+				"preload": true
       },
       "flexibleLayout":{
         "type": "sap.ui.model.json.JSONModel",
@@ -134,7 +149,7 @@
           "clearControlAggregation": false,
           "viewName": "Master",
           "controlAggregation": "beginColumnPages",
-          "viewLevel": 0
+          "viewLevel": 1
         },
         "DetailApp":{
           "viewType": "XML",
