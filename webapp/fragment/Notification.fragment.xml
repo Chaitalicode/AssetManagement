@@ -3,10 +3,11 @@
 		title="Requests"
 		class="sapUiPopupWithPadding"
 		placement="Bottom" showCloseButton="true" afterClose="onAfterClose" >
-	<List showNoData="false" items="{main>/xyz}">
+	<List showNoData="false" items="{main>/NewReqAsst}">
 	    <NotificationListItem
 				title="Employee with ID {main>empID} has requested for {main>nwItem}"
 				description="{main>name}"
+				authorPicture="{main>img}"
 				showCloseButton="true"
 				unread="true"
 				priority="None"
@@ -14,17 +15,15 @@
 				close=".onItemClose"
 				press=".onListItemPress"
 				>
-				<buttons>
-					<Button text="Accept " press="onAcceptPress" />
-					<Button text="Reject " press="onRejectPress" />
-				</buttons>
+				
                 
 		</NotificationListItem>
 	</List>
-		<List showNoData="false" items="{dymcModel>/OldAssestReq}">
+		<List showNoData="false" items="{main>/OldAssestReq}">
 	    <NotificationListItem
-				title="Employee with ID {dymcModel>empId} has requested for {dymcModel>comboItem} Replacement"
-				description="{dymcModel>empName}"
+				title="Employee with ID {main>empId} has requested for {main>comboItem} Replacement"
+				description="{main>empName}"
+				authorPicture="{main>usrImg}"
 				showCloseButton="true"
 				unread="true"
 				priority="None"
@@ -32,13 +31,7 @@
 				close=".onItemClose"
 				press=".onListItemPress"
 				>
-				<buttons>
-				    <!-- <Button text="Attachments" press="onAttachment" >
-					 <Link href="{main>img}" text="Download"/>
-					</Button> -->
-					<Button text="Accept " press="onOldAcceptPress" />
-					<Button text="Reject " press="onOldRejectPress" />
-				</buttons>
+			
                 
 		</NotificationListItem>
 	</List>

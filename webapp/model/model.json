@@ -5,8 +5,8 @@
         "lName":"Pandya",
         "desig":"Junior UI5 and Fiori Consultant",
         "description":"Myself,Chaitali Pandya. Expertise in UI5, Fiori, OData and CDS",
-        "email":"chaitali@signiwis.com",
-        "psw":"chaitali",
+        "email":"111",
+        "psw":"111",
         "Paddr":"1745/Mission Street",
         "Caddr":"345/Gayatrinagar,mangal colony",
         "doj":"17-Oct-2019",
@@ -25,9 +25,9 @@
         "fName":"Gaurav",
         "lName":"Bothra",
         "desig":"ABAP Consultant",
-        "email":"gaurav@signiwis.com",
+        "email":"222",
         "description":"Hello! I am Gaurav Bothra. Expertise in ABAP and OABAP",
-        "psw":"gaurav",
+        "psw":"222",
         "Paddr":"Vijay Nagar",
         "Caddr":"345/Gayatrinagar,mangal colony",
         "doj":"05-Oct-2017",
@@ -109,7 +109,34 @@
                     "status":"Completed"
                 }
             ],
-            "requests":[]
+            "requests":[{
+                "empID":"101",
+				"name":"Chaitali Pandya",
+				"empDate":"15-10-2019",
+				"nwItem":"Internet",
+				"reason":"It is WFH, My Mobile daily limit got used soon in while doing office work",
+				"status":"Approved"
+            },
+            {
+                "empID":"101",
+				"name":"Chaitali Pandya",
+				"empDate":"15-10-2019",
+				"nwItem":"Internet",
+				"reason":"Internet speed is too low.",
+				"status":"Approved"
+            }],
+            "oldAsst":[
+                {
+                    "empId" :"101",
+                    "empName":"Chaitali Pandya",
+                    "empDate":"12-04-2018",
+                    "asstId":"MAC10012A",
+                    "asstNm":"MacBook Air",
+                    "img":"",
+                    "reason":"Damaged",
+                    "status":"Approved"
+                }
+            ]
         },
         {
             "empId":"102",
@@ -156,7 +183,24 @@
                     "status":"Completed"
                 }
             ],
-            "requests":[]
+            "requests":[ {
+                "empID":"102",
+				"name":"Gaurav Bothra",
+				"empDate":"19-11-2020",
+				"nwItem":"Internet",
+				"reason":"Internet speed is too low.",
+				"status":"Approved"
+            }],
+            "oldAsst":[  {
+                "empId" :"102",
+                "empName":"Gaurav Bothra",
+                "empDate":"12-11-2020",
+                "asstId":"MAC10012A",
+                "asstNm":"MacBook Air",
+                "img":"",
+                "reason":"Damaged",
+                "status":"Approved"
+            }]
         },
         {
             "empId":"103",
@@ -203,17 +247,25 @@
                     "status":"Completed"
                 }
             ],
-            "requests":[]
+            "requests":[{
+                "empID":"103",
+				"name":"Anurag Chakrabortty",
+				"empDate":"15-10-2019",
+				"nwItem":"Internet",
+				"reason":"Mobile daily limit got used, while doing office work",
+				"status":"Approved"
+            }],
+            "oldAsst":[]
         }
     ],
 
     "Masterlist":[
         {
+            "name":"Assets Details"
+        },
+        {
         "name" : "Employee Details"
     },
-{
-    "name":"Assets Details"
-},
 {
     "name":"Expenses"
 },
@@ -231,7 +283,7 @@
     "Vendor_Eml":"dipesh@gmail.com",
     "Vedor_phone":"7089345672",
     "date_purchase":"05-10-2018",
-    "quantity":"15",
+    "quantity":"10",
     "year":"2018"
 },
 {
@@ -268,7 +320,7 @@
     "Vedor_phone":"7089345672",
     "date_purchase":"05-10-2018",
     "quantity":"15",
-    "year":"2018"
+    "year":"2019"
 },
 {
     "item_id":"MTY567IB",
@@ -286,12 +338,60 @@
     "item_id":"MAC10012A",
     "item_name":"Dell",
     "item_type":"Laptop",
-    "item_cost":"35000",
+    "item_cost":"70000",
     "Vendor_Name":"Dipesh",
     "Vendor_Eml":"piyush@gmail.com",
     "Vedor_phone":"7089345672",
     "date_purchase":"05-10-2019",
-    "quantity":"15",
+    "quantity":"10",
     "year":"2019"
+},
+{
+    "item_id":"Airtel5G",
+    "item_name":"Internet Broadbands",
+    "item_type":"Broadbands",
+    "item_cost":"5000",
+    "Vendor_Name":"Dipesh",
+    "Vendor_Eml":"piyush@gmail.com",
+    "Vedor_phone":"7089345672",
+    "date_purchase":"05-10-2019",
+    "quantity":"7",
+    "year":"2019"
+},
+{
+    "item_id":"Airtel5G",
+    "item_name":"Internet Broadbands",
+    "item_type":"Broadbands",
+    "item_cost":"5000",
+    "Vendor_Name":"Dipesh",
+    "Vendor_Eml":"dipesh@gmail.com",
+    "Vedor_phone":"8930494444",
+    "date_purchase":"05-10-2020",
+    "quantity":"7",
+    "year":"2020"
+},
+{
+    "item_id":"Airtel5G",
+    "item_name":"Internet Broadbands",
+    "item_type":"Broadbands",
+    "item_cost":"5000",
+    "Vendor_Name":"Dipesh",
+    "Vendor_Eml":"dipesh@gmail.com",
+    "Vedor_phone":"9034812332",
+    "date_purchase":"05-10-2020",
+    "quantity":"7",
+    "year":"2020"
+},
+{
+    "item_id":"Airtel5G",
+    "item_name":"Internet Broadbands",
+    "item_type":"Broadbands",
+    "item_cost":"3000",
+    "Vendor_Name":"Dipesh",
+    "Vendor_Eml":"dipesh@gmail.com",
+    "Vedor_phone":"9034812332",
+    "date_purchase":"05-10-2020",
+    "quantity":"7",
+    "year":"2020"
 }]
 }

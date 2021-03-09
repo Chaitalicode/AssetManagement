@@ -7,10 +7,11 @@
 	height="100%"
 	busyIndicatorDelay="0"
 >
-<Page title="Detail" showHeader="true">
+<Page title="DETAIL" showHeader="true">
 <headerContent>
-<Button text="Logout" press="onLog"></Button>
-    <Button icon="sap-icon://bell" text="{dymcModel>/hrNotfCount/contHr}" press="onNotification"></Button>
+
+    <Button id="btnIdAdmin" icon="sap-icon://bell" text="{main>/hrNotfCount/contHr}" press="onNotification"></Button>
+	<Button text="LOGOUT" icon="sap-icon://log" press="onLog"></Button>
 </headerContent>
 <content>
 
@@ -28,5 +29,16 @@
 <core:Fragment fragmentName="am.assetmanagment.fragment.requests" type="XML" ></core:Fragment>
 </VBox>
 </content>
+<footer>
+					<Bar>
+						<!-- <contentMiddle>
+						<Button icon="sap-icon://endoscopy" text="Copyright"></Button>
+						<Text text="Support Portal"></Text>
+						</contentMiddle>
+						<contentRight>
+						<Text text="Contact Us"></Text>
+						</contentRight> -->
+					</Bar>
+				</footer>
 </Page>
 </mvc:View>

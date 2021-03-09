@@ -2,7 +2,7 @@ sap.ui.define([],function(){
 	return{
 		StatusState: function(iState){
 			debugger;
-			if(iState === "Completed"){
+			if(iState === "Approved"){
 				return "Success";
 			}
 			else if(iState === "In-Progress"){

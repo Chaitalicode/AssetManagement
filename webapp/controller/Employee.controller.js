@@ -3,8 +3,12 @@ sap.ui.define([
 	"sap/m/MessageBox",
 	"sap/m/MessageToast",
     "sap/ui/core/routing/History",
-	"am/assetmanagment/formatter/formater"
-], function (Controller, MessageBox, MessageToast,History,Formatter1) {
+	"am/assetmanagment/formatter/formater",
+	"am/assetmanagment/Validation/NewAssetValidation",
+	"am/assetmanagment/Validation/NewAssetLiveValidation",
+	"am/assetmanagment/Validation/OldAssetValidation",
+	"am/assetmanagment/Validation/OldAssetLiveChangeValidation",
+], function (Controller, MessageBox, MessageToast,History,Formatter1,NewAssetValidation,NewAssetLiveValidation,OldAssetValidation,OldAssetLiveChangeValidation) {
 	"use strict";
 
 	return Controller.extend("am.assetmanagment.controller.Employee", {
@@ -12,6 +16,7 @@ sap.ui.define([
 		onInit: function () {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.attachRoutePatternMatched(this.onObjectMatched, this);
+
 		},
         onObjectMatched:function(oEv){
             debugger;
@@ -20,28 +25,63 @@ sap.ui.define([
 			this.path = "main>/EmployeeDetails/" + this.oEMpId;
             this.assetPath =  "main>/AssetsAlloted/"+ this.oEMpId +"/assests";
 			this.getView().byId("ObjectPageLayout").bindElement(this.path);
-			// this.getView().byId("reqID").bindElement("main>/AssetsAlloted/"+ this.oEMpId+"/New_Request");
-			this.myReqs = "main>/AssetsAlloted/"+ this.oEMpId+"/New_Request";
-			this.oldAssstReqs = "main>/AssetsAlloted/"+ this.oEMpId+"/OldAsst_Request";
+
+			
+			//   this.getOwnerComponent().getModel("main").getProperty(this.path+"/notify");
+
+			 var empCount= this.getOwnerComponent().getModel("main").getProperty("/EmployeeDetails/"+ this.oEMpId+"/notiCount");
+			// var empLength = empCount.length;
+			
+			if(empCount == 0 || empCount === undefined){
+                this.getView().byId("btnIdN").setText(null);
+				this.getView().byId("btnIdN").setType("Transparent");
+			}
+			else{
+				this.getView().byId("btnIdN").setText(empCount);
+				this.getView().byId("btnIdN").setType("Accept");
+			}
+			
+			// Old Asset Req...........................................................
+			this.oldAssstReqs = "main>/AssetsAlloted/"+ this.oEMpId+"/oldAsst";
+			    debugger;
 			var oldAsstTemplate = new sap.m.ObjectListItem({
 				title:"{main>asstId}",
 				intro:"{main>asstNm}",
-				number:"{main>status}"
+				firstStatus: new sap.m.ObjectStatus({
+					text: "{main>status}",
+					state:{path:'main>status', formatter:this.formatter.StatusState.bind(this)},
+				}),
+				secondStatus:new sap.m.ObjectStatus({
+					text: "{main>reason}",			
+				}),
 				
 			})
+			
 			this.getView().byId("OldAsstId").bindItems(this.oldAssstReqs,oldAsstTemplate);
 
+			// ------------------------------------------------------------------------
+
+			// New Assets Req............................................
+			this.myReqs = "main>/AssetsAlloted/"+ this.oEMpId+"/requests";
 			var reqTemplate = new sap.m.ObjectListItem({
 				title:"{main>nwItem}",
-				intro:"{main>empDate}",
-				number:"{main>status}",
+				intro:"{main>name}",
 				
 				firstStatus: new sap.m.ObjectStatus({
-					text:"{main>txtArea}"
-				})
+					text: "{main>status}",
+					state:{path:'main>status', formatter:this.formatter.StatusState.bind(this)},
+				
+				
+				}),
+
+				secondStatus:new sap.m.ObjectStatus({
+					text: "{main>reason}",			
+				}),
 			})
 			
 			this.getView().byId("reqID").bindItems(this.myReqs,reqTemplate);
+
+			// ---------------------------------------------------
 			var template = new sap.m.ColumnListItem({
 				cells:[
 					new sap.m.Text({
@@ -80,14 +120,11 @@ sap.ui.define([
             // this.oRouter.navTo("RouteMain");
         },
 
-		onRaiseTicket:function(oEv){
-			debugger;
+		
+
+		onRaiseTicketNew:function(oEv){
 			if(!this.fragment){
-				this.fragment = new sap.ui.xmlfragment(this.getView().getId(),"am.assetmanagment.fragment.ticket",this);
-				this.getView().addDependent(this.fragment);
-			}
-			else{
-				this.fragment = sap.ui.xmlfragment(this.getView().getId(),"am.assetmanagment.fragment.ticket",this);
+				this.fragment = new sap.ui.xmlfragment(this.getView().getId(),"am.assetmanagment.fragment.Newticket",this);
 				this.getView().addDependent(this.fragment);
 			}
 			var Eid = this.getView().getModel("main").getProperty("/EmployeeDetails/"+this.oEMpId+"/empid");
@@ -100,138 +137,164 @@ sap.ui.define([
 			this.fragment.open();
 		},
 
-		onComboSelect:function(oEv){
-			var userSlct = oEv.getParameters().value;
-			if(userSlct === "New Asset"){
-				this.getView().byId("newAsstID").setVisible(true);
-				this.getView().byId("oldAsstID").setVisible(false);
+		onRaiseTicketOld:function(oEv){
+			debugger;
+			if(!this.OldAsstfragment){
+				this.OldAsstfragment = new sap.ui.xmlfragment(this.getView().getId(),"am.assetmanagment.fragment.OldTicket",this);
+				this.getView().addDependent(this.OldAsstfragment);
 			}
-			else if(userSlct === "Old Asset"){
-				this.getView().byId("oldAsstID").setVisible(true);
-				this.getView().byId("newAsstID").setVisible(false);
-			}
+			var Eid = this.getView().getModel("main").getProperty("/EmployeeDetails/"+this.oEMpId+"/empid");
+			var Fname = this.getView().getModel("main").getProperty("/EmployeeDetails/"+this.oEMpId+"/fName");
+			var Lname = this.getView().getModel("main").getProperty("/EmployeeDetails/"+this.oEMpId+"/lName");
+		    this.getView().byId("id").setValue(Eid);
+			this.getView().byId("name").setValue(Fname+" "+Lname);
+			this.getView().byId("dateId").setMinDate(new Date());
+			this.getView().byId("dateId").setMaxDate(new Date());
+			this.OldAsstfragment.open();
 		},
         
+		
+		validate: function () {
+			NewAssetLiveValidation.NewAssetLiveChangevalidate.call(this);
+		},
+
+		validateOld:function(){
+			debugger;
+			OldAssetLiveChangeValidation.OldAssetLiveValidation.call(this);
+		},
+
 		arr:[],
 		aOld:[],
 		count:[],
 		onSubmitReq:function(oEv){
 			debugger;
+			var aLocal = [];
+			var validation = NewAssetValidation.NewAssetValidation.call(this);
 			var MJson = this.getOwnerComponent().getModel("main").getProperty("/AssetsAlloted");
+			var UsrImg =   this.getOwnerComponent().getModel("main").getProperty("/EmployeeDetails/"+this.oEMpId+"/imgEmp");
 			this.empID = this.getView().byId("id").getValue();
 			var name = this.getView().byId("name").getValue();
 			var empDate = this.getView().byId("dateId").getValue();	
-			var comboItem = this.getView().byId("comiD").getSelectedItem();	
-				
-			if(empDate === "" && comboItem ===null){
-				sap.ui.core.Fragment.byId(this.getView().getId(), "dateId").setValueState("Error");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "dateId").setValueStateText("This field is Mandatory");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "dateId").focus();
-
-				sap.ui.core.Fragment.byId(this.getView().getId(), "comiD").setValueState("Error");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "comiD").setValueStateText("This field is Mandatory");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "comiD").focus();
-			}
-			else{		
-			if((comboItem.getText())=== "New Asset"){
-			
-					
 			var nwItem = this.getView().byId("newComboID").getSelectedItem();
+			
+			
 			var txtArea = this.getView().byId("textAreaID").getValue();
-
-			if(nwItem === null && txtArea ===""){
-				sap.ui.core.Fragment.byId(this.getView().getId(), "newComboID").setValueState("Error");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "newComboID").setValueStateText("This field is Mandatory");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "newComboID").focus();
-
-				sap.ui.core.Fragment.byId(this.getView().getId(), "textAreaID").setValueState("Error");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "textAreaID").setValueStateText("This field is Mandatory");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "textAreaID").focus();
-			}
-			else{
-				sap.ui.core.Fragment.byId(this.getView().getId(), "dateId").setValueState("None");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "comiD").setValueState("None");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "newComboID").setValueState("None");
-				sap.ui.core.Fragment.byId(this.getView().getId(), "textAreaID").setValueState("None");
+			if (validation === true) {
 			var nwItem1 = nwItem.getText();
             var that = this;
 			var obj = {
 				"empID":this.empID,
 				"name":name,
 				"empDate":empDate,
-				"comboItem":comboItem,
 				"nwItem":nwItem1,
-				"txtArea":txtArea,
+				"reason":txtArea,
+				"img":UsrImg,
 				"status":"In-Progress"
 			};
+
+		
+			
 			that.arr.push(obj);
-            var oldRd = that.assetPath.substr(5);
-			// var newJson = new sap.ui.model.json.JSONModel();
-          
-		   MJson.forEach(function(iValue,i){
-			   if(iValue.empId === that.empID){
-				that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/"+i+"/New_Request",that.arr);
-				that.getOwnerComponent().getModel("main").setProperty("/xyz",that.arr);
-			   }
-		   })
-		  
-		   that.fragment.destroy();
-		   that.fragment = null;
-		}
-	}
-	}
+           
 
-		if(comboItem === "Old Asset"){
-			var asstId = this.getView().byId("asstID").getValue();		
-			var asstNm = this.getView().byId("asstNm").getValue();	
-			var oldtxtID = this.getView().byId("oldtxtID").getValue();	
-			var that = this;
-			var obj = {
-				"empId" :this.empID,
-				"empName":name,
-				"asstId":asstId,
-				"asstNm":asstNm,
-				"empDate":empDate,
-				"comboItem":comboItem,
-				"img":this.file,
-				"reason":oldtxtID,
-				"status":"In-Progress"
-			}
-            that.aOld.push(obj);
-
-			var newJson = new sap.ui.model.json.JSONModel();
-            that.getOwnerComponent().setModel(newJson,"dymcModel");
 			MJson.forEach(function(iValue,i){
 				if(iValue.empId === that.empID){
-					that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/"+i+"/OldAsst_Request", that.aOld);
-				//  that.getOwnerComponent().getModel("main").setProperty("/xyz",that.arr);
-				that.getOwnerComponent().getModel("dymcModel").setProperty("/OldAssestReq",  that.aOld);
+				//  let aFilterReq = aLocal.filter((item)=>{
+                //       return item.empId = iValue.empId;
+				//  });
 
-				var nCount = that.getOwnerComponent().getModel("dymcModel").getProperty("/OldAssestReq/" + i);
+				 
+				 var aReqs = that.getOwnerComponent().getModel("main").getProperty("/AssetsAlloted/"+i+"/requests");
+				 aReqs.push(obj);
+				 that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/"+i+"/requests",aReqs);
+				 that.getOwnerComponent().getModel("main").setProperty("/NewReqAsst",that.arr);
+				 
+
+				 var nCount = that.getOwnerComponent().getModel("main").getProperty("/NewReqAsst/" + i);
 						that.count.push(nCount);
 						var empRequestLength = that.count.length;
 						var sRes = {
 							contHr: empRequestLength++
 						};
-						that.getOwnerComponent().getModel("dymcModel").setProperty("/hrNotfCount", sRes);
+						that.getOwnerComponent().getModel("main").setProperty("/hrNotfCount", sRes);
+				}
+			})
+		   
+			that.fragment.destroy();
+			that.fragment = null;
+		}
+		},
+
+		onSubmitReqAsstOld:function(oEv){
+			debugger;
+			var validation = OldAssetValidation.OldAssetValidation.call(this);
+			var MJson = this.getOwnerComponent().getModel("main").getProperty("/AssetsAlloted");
+			var UsrImg1 =   this.getOwnerComponent().getModel("main").getProperty("/EmployeeDetails/"+this.oEMpId+"/imgEmp");
+			this.empID = this.getView().byId("id").getValue();
+			var name = this.getView().byId("name").getValue();
+			var empDate = this.getView().byId("dateId").getValue();	
+			var asstId = this.getView().byId("asstID").getValue();	
+			var asstNm = this.getView().byId("asstNm").getValue();	
+			var reasonId = this.getView().byId("oldtxtID").getValue();
+
+			if (validation === true) {
+			var that = this;
+			var obj = {
+				"empId" :this.empID,
+				"empName":name,
+				"usrImg":UsrImg1,
+				"empDate":empDate,
+				"asstId":asstId,
+				"asstNm":asstNm,
+				"img":this.file,
+				"reason":reasonId,
+				"status":"In-Progress"
+			}
+            that.aOld.push(obj);
+
+		
+			MJson.forEach(function(iValue,i){
+				if(iValue.empId === that.empID){
+					var aReqs = that.getOwnerComponent().getModel("main").getProperty("/AssetsAlloted/"+i+"/oldAsst");
+					aReqs.push(obj);
+					that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/"+i+"/oldAsst", aReqs);
+				that.getOwnerComponent().getModel("main").setProperty("/OldAssestReq",  that.aOld);
+
+				var nCount = that.getOwnerComponent().getModel("main").getProperty("/OldAssestReq/" + i);
+						that.count.push(nCount);
+						var empRequestLength = that.count.length;
+						var sRes = {
+							contHr: empRequestLength++
+						};
+						that.getOwnerComponent().getModel("main").setProperty("/hrNotfCount", sRes);
 				}
 			})
 			
-		    that.fragment.destroy();
-		   that.fragment = null; 	
+		    that.OldAsstfragment.destroy();
+		   that.OldAsstfragment = null; 	
+			
 		}
+
 		},
 
 		onEmpNotification:function(oEv){
 			debugger;
 			var oButton = oEv.getSource();
+			if(!oButton.getText()){
+				MessageToast.show("You Don't have any Notifications");
+				return;
+			}
 			var oEMpReq = this.getOwnerComponent().getModel("main").getProperty("/AssetsAlloted");
-			var oEMpReq2 = this.getOwnerComponent().getModel("main").getProperty("/HRNotification") ||[];
 			if(!this.Notifyfragment){
 				 var myID = this.createId("myFrag");
 				 this.Notifyfragment = new sap.ui.xmlfragment(myID,"am.assetmanagment.fragment.EmpNotification",this);
-				 this.getView().addDependent(this.Notifyfragment);
+			
 			}
+			// this.Notifyfragment.bindElement(this.path+"/notify");
+			this.getView().addDependent(this.Notifyfragment);
+			
+			this.Notifyfragment.getContent()[0].getItems()[0].bindItems(this.path+"/notify",this.Notifyfragment.getContent()[0].getItems()[0].getItems()[0]);
+			this.Notifyfragment.getContent()[0].getItems()[1].bindItems(this.path+"/notify",this.Notifyfragment.getContent()[0].getItems()[1].getItems()[0]);
 			this.Notifyfragment.openBy(oButton);
 		},
 
@@ -309,14 +372,41 @@ sap.ui.define([
 
 		onItemClose:function(oEvent){
 			debugger;
-			oEvent.getSource().getParent().removeItem(oEvent.getSource())
+			// oEvent.getSource().getParent().removeItem(oEvent.getSource());
+			var oDeleteObj = oEvent.getSource().getBindingContext("main").getObject();
+			var sPath = oEvent.getSource().getParent().getBinding("items").getPath();
+			var oNotiftions =  this.getOwnerComponent().getModel("main").getProperty(sPath);
+			oNotiftions.forEach(function(item,i){
+				if(item === oDeleteObj){
+					oNotiftions.splice(i,1);
+			
+				}
+			});
+			this.getOwnerComponent().getModel("main").setProperty(sPath,oNotiftions);
+			var oCount = oNotiftions.length;
+			this.getOwnerComponent().getModel("main").setProperty(this.path+"/notiCount",oCount);
+			this.getView().byId("btnIdN").setText(oCount);
+			var btn = this.getView().byId("btnIdN");
+			if(btn.getText() == 0){
+                btn.setText(null);
+				btn.setType("Transparent");
+			}
+			else{
+				btn.setText(oCount);
+				btn.setType("Accept");
+			}
 		},
 
 		onCancel:function(){
 			debugger;
 			this.fragment.destroy();
 		    this.fragment = null;
-			// this.getView().byId("idDialogS2").destroy();
+		
+		},
+
+		onClose:function(){
+			this.OldAsstfragment.destroy();
+		    this.OldAsstfragment = null;
 		},
 
 		onLogout:function(){

@@ -29,7 +29,7 @@
 						
 					<!-- <Text text="{main>desig}"/>					 -->
 						<ToolbarSpacer />
-					  <Button text="{main>/EmpNotfCount/contHr}" icon="sap-icon://bell" press="onEmpNotification" type="Accept"></Button>
+					  <Button id="btnIdN"  icon="sap-icon://bell" press="onEmpNotification" type="Transparent"></Button>
 					   <Button text="Logout" icon="sap-icon://log" press="onLogout" type="Emphasized"></Button>
 					</Toolbar>
 				</ux:expandedContent>
@@ -193,7 +193,7 @@
 					<ux:ObjectPageSubSection id="RequestID">
 						<ux:blocks>
          <VBox >               	
-	<List id="reqID" headerText="Your Assets Request" showNoData="true">
+	<List id="reqID" headerText="Requests for New" >
 		<!-- <ObjectListItem
 			title="{main>empID}"
 			type="Active"
@@ -206,7 +206,7 @@
 			
 		</ObjectListItem> -->
 	</List>
-	<List id="OldAsstId" headerText="Requests for Old Assests" showNoData="true">
+	<List id="OldAsstId" headerText="Requests for Old Assests">
 		<!-- <ObjectListItem
 			title="{main>empID}"
 			type="Active"
@@ -232,7 +232,8 @@
 				<footer>
 			         <OverflowToolbar>
 			         <ToolbarSpacer />
-			         <Button type="Reject" text="Raise Ticket" class="sapUiSmallMarginEnd" press="onRaiseTicket"/>		 
+			         <Button type="Accept" icon="sap-icon://request" text="Raise Ticket Old " class="sapUiSmallMarginEnd" press="onRaiseTicketOld"/>	
+					  <Button type="Accept" icon="sap-icon://request" text="Raise Ticket New " class="sapUiSmallMarginEnd" press="onRaiseTicketNew"/>		 	 
 				   
 			         </OverflowToolbar>
 		       </footer>	

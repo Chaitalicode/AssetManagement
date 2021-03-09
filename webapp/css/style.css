@@ -1,10 +1,72 @@
 /* Enter your custom styles here */
-.page1 .sapMTitle {
-    left:550px;
+
+
+.page1{
+    /* background-image: url("https://www.martechcube.com/wp-content/uploads/2019/08/digital-asset-management.jpg"); */
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQArRsnFNeIbejg-HNzk5YwZbqTxOORgWwTEw&usqp=CAU");
+    background-size: 100% 100%;
+    background-size: cover;
 }
 
+
+
 .sapMIBar-CTX .sapMTitle {
-    color: aqua;
+   
     text-shadow: none;
     font-weight: bold;
+}
+
+.logoimage{
+    margin-left: 0px;
+    left: 0px;
+    width:5%;
+	height:82%;
+}
+
+.txt{
+    margin-right: 90px !important;
+}
+
+/* .txtClass{
+    margin-left: 10px;
+    font-size: 20px;
+    margin-top: 3px;
+    color: darkgoldenrod;
+} */
+
+.txtClass.sapMDialog>header.sapMDialogTitle .sapMTitle {
+    color: darkseagreen;
+    margin: 0;
+    vertical-align: middle;
+    left: 40px;
+}
+
+.sapUiIcon::before {
+    content: attr(data-sap-ui-icon-content);
+    font-weight: bold;
+    height: 100px;
+    font-size: 19px;
+    width: 100px;
+    -webkit-font-smoothing: antialiased;
+    color: blue;
+}
+
+.txtOld.sapMDialog>header.sapMDialogTitle .sapMTitle {
+    color: #fafafa;
+    left: 190px;
+    color: darkseagreen;
+    margin: 0;
+    vertical-align: middle;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.greenTxtHlight {
+    color: green;
+}
+.yellowTxtHlight {
+    color: yellow;
+}
+.redTxtHlight {
+    color: red;
 }

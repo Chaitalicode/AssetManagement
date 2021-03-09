@@ -7,7 +7,7 @@
 				ariaLabelledBy="title">
                 <ui:extension>
 					<OverflowToolbar style="Clear">
-						<Title id="title" text="Products"/>
+						<Title id="title" text="Asset List"/>
                         <ToolbarSpacer/>
                         <ComboBox id="idPopinLayout"
 						placeholder="Assets by Year"
@@ -29,52 +29,52 @@
 							<Text text="{main>item_id}" wrapping="false" />
 						</ui:template>
 					</ui:Column>
-					<ui:Column width="11rem">
+					<ui:Column width="11rem" filtered="true" showFilterMenuEntry="true" filterProperty="item_name" defaultFilterOperator="Contains">
 						<Label text="Assest Name" />
 						<ui:template>
-							<Input value="{main>item_name}"/>
+							<Text text="{main>item_name}"/>
 						</ui:template>
 					</ui:Column>
                     <ui:Column width="11rem">
 						<Label text="Assest Type" />
 						<ui:template>
-							<Input value="{main>item_type}"/>
+							<Text text="{main>item_type}"/>
 						</ui:template>
 					</ui:Column>
                     <ui:Column width="11rem">
 						<Label text="Assest Cost" />
 						<ui:template>
-							<Input value="{main>item_cost}"/>
+							<Text text="{main>item_cost}"/>
 						</ui:template>
 					</ui:Column>
                     <ui:Column width="11rem">
 						<Label text="Quantity" />
 						<ui:template>
-							<Input value="{main>quantity}"/>
+							<Text text="{main>quantity}"/>
 						</ui:template>
 					</ui:Column>
                      <ui:Column width="11rem">
 						<Label text="Vendor Name" />
 						<ui:template>
-							<Input value="{main>Vendor_Name}"/>
+							<Text text="{main>Vendor_Name}"/>
 						</ui:template>
 					</ui:Column>
                       <ui:Column width="11rem">
 						<Label text="Vendor Email" />
 						<ui:template>
-							<Input value="{main>Vendor_Eml}"/>
+							<Text text="{main>Vendor_Eml}"/>
 						</ui:template>
 					</ui:Column>
                      <ui:Column width="11rem">
 						<Label text="Vendor Phone" />
 						<ui:template>
-							<Input value="{main>Vedor_phone}"/>
+							<Text text="{main>Vedor_phone}"/>
 						</ui:template>
 					</ui:Column>
                       <ui:Column width="11rem">
 						<Label text="Purchase Date from Vendor" />
 						<ui:template>
-							<Input value="{main>date_purchase}"/>
+							<Text text="{main>date_purchase}"/>
 						</ui:template>
 					</ui:Column>
                 </ui:columns>
@@ -180,4 +180,5 @@
 		</items>
 	</Table> -->
 <!-- </Dialog> -->
+
 </core:FragmentDefinition>

@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns="sap.m"	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" 	xmlns:f="sap.ui.layout.form">
+<Dialog id="idDialogS2" showHeader="true" title="New Assets Request" icon="sap-icon://travel-request"  class="txtClass"  >
+
+<!-- <VBox  alignContent="Center" alignItems="Center">
+<Text text="New Assets Request" class="txtClass"></Text>
+</VBox> -->
+<f:SimpleForm id="simpleID">
+          <VBox >
+			<Label text="Employee Id"></Label>
+			<Input id="id" width="100%" editable="false"></Input>
+			<Label text="Employee Name"></Label>
+			<Input id="name" width="100%" editable="false"></Input>
+			
+			<Label text="Datepicker" ></Label>
+			<DatePicker id="dateId"  value="" width="100%" change="validate"></DatePicker>
+			
+
+            <!-- new assets -->
+        <VBox  alignContent="Start" alignItems="Start" justifyContent="Start" class="simpleform">
+		<VBox id="newAsstID" visible="true">
+		<Label text="Assets List" ></Label>
+            <ComboBox placeholder="Select Asset" id="newComboID" change="validate">
+				<core:Item key="Laptop" text="Laptop" />
+                <core:Item key="Laptop Charger" text="Charger" />
+				<core:Item key="Mobile Charger" text="Mobile Charger" />
+				<core:Item key="Mobile" text="Mobile" />
+				<core:Item key="Internet" text="Internet" />
+			</ComboBox>
+			
+			<Label text="Reason" required="true"></Label>
+			<TextArea change="validate" id="textAreaID" liveChange="onTextArea" maxLength="40" showExceededText="true"  valueStateText="Exceeding More than Limit"></TextArea>
+        </VBox>
+
+          </VBox>
+		</VBox>
+</f:SimpleForm>
+
+<buttons>
+	<Button text="Submit Request" type="Accept" press="onSubmitReq"></Button>
+	<Button text="Cancel" type="Reject" press="onCancel"></Button>
+</buttons>
+</Dialog>
+</core:FragmentDefinition>

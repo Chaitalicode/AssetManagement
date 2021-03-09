@@ -43,7 +43,7 @@ sap.ui.define([
 		},
 		_onObjectMatched:function(oEv){
 			debugger;
-			
+		
 		},
 		_onObjectMatched1:function(oEv){
 			debugger;
@@ -142,6 +142,10 @@ sap.ui.define([
 		onNotification:function(oEv){
 			debugger;
 			var oButton = oEv.getSource();
+			if(!oButton.getText()){
+				MessageToast.show("You Don't have any Notifications");
+				return;
+			}
 			var oEMpReq = this.getOwnerComponent().getModel("main").getProperty("/AssetsAlloted");
 			var NewAssests = this.getOwnerComponent().getModel("main").getProperty("/xyz") ||[];
 			if(!this.Notifyfragment){
@@ -167,94 +171,53 @@ sap.ui.define([
 
 		empReq:[],
 		count: [],
-		onAcceptPress:function(oEv){
-               debugger;
-			   var oStatus = this.getOwnerComponent().getModel("main").getProperty("/xyz");
-			   var oItm = oEv.getSource();
-			   var oList = oItm.getParent().getParent().getParent();
-			   var Uid =  oEv.getSource().getParent().getParent().getTitle();
-			   var IDU = Uid.substr(17,3);
-			   var that = this;
-			  
-		       for(let i=0; i<oStatus.length; i++){
-				   if(oStatus[i].empID === IDU){
-					that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/" + i+"/New_Request/status","Approved");
-					that.getOwnerComponent().getModel("main").setProperty("/xyz/" + i+"/status","Approved");
-					var req = that.getOwnerComponent().getModel("main").getProperty("/xyz/"+i);
-					this.empReq.push(req);
-					that.getOwnerComponent().getModel("main").setProperty("/EmpFrag",this.empReq);
-					
-					var nCount = that.getOwnerComponent().getModel("main").getProperty("/EmpFrag");
-						that.count.push(nCount);
-						var empRequestLength = that.count.length;
-						var sRes = {
-							contHr: empRequestLength++
-						};
-						that.getOwnerComponent().getModel("main").setProperty("/EmpNotfCount", sRes);
-					oStatus.splice(i,1);
-					this.getView().getModel("main").refresh();
-				   }
-			   }
-			
-		},
-
-		onRejectPress:function(oEv){
-			debugger;
-			var oStatus = this.getOwnerComponent().getModel("main").getProperty("/xyz");
-			var oItm = oEv.getSource();
-			var oList = oItm.getParent().getParent().getParent();
-			var Uid = oEv.getSource().getParent().getParent().getTitle();
-			var IDU = Uid.substr(17,3);
-			var that = this;
-		   
-			for(let i=0; i<oStatus.length; i++){
-				if(oStatus[i].empID === IDU){
-				 that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/" + i+"/New_Request/status","Approved");
-				 that.getOwnerComponent().getModel("main").setProperty("/xyz/" + i+"/status","Rejected");
-				 var req = that.getOwnerComponent().getModel("main").getProperty("/xyz/"+i);
-				 this.empReq.push(req);
-				 that.getOwnerComponent().getModel("main").setProperty("/EmpFrag",this.empReq);
-				 
-				 var nCount = that.getOwnerComponent().getModel("main").getProperty("/EmpFrag");
-						that.count.push(nCount);
-						var empRequestLength = that.count.length;
-						var sRes = {
-							contHr: empRequestLength++
-						};
-						that.getOwnerComponent().getModel("main").setProperty("/EmpNotfCount", sRes);
-				 oStatus.splice(i,1);
-				 this.getView().getModel("main").refresh();
-				}
-			}
-		 
-	 },
-
+	
 	 onOldAcceptPress:function(oEv){
 		debugger;
-		var oStatus = this.getOwnerComponent().getModel("dymcModel").getProperty("/OldAssestReq");
+		var oStatus = this.getOwnerComponent().getModel("main").getProperty("/OldAssestReq");
+		var oEmpDetails = this.getOwnerComponent().getModel("main").getProperty("/EmployeeDetails");
 		var oItm = oEv.getSource();
 		var oList = oItm.getParent().getParent().getParent();
-		var Uid =  oEv.getSource().getParent().getParent().getTitle();
-		var IDU = Uid.substr(17,3);
+		// var Uid =  oEv.getSource().getParent().getParent().getTitle();
+		var Uid = oEv.getSource().getBindingContext("main").getObject().empId;
+		var oItmSelected = oEv.getSource().getBindingContext("main").getObject();	
+		// var IDU = Uid.substr(17,3);
 		var that = this;
 	   
 		for(let i=0; i<oStatus.length; i++){
-			if(oStatus[i].empId === IDU){
-			 that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/" + i+"/OldAsst_Request/status","Approved");
-			 that.getOwnerComponent().getModel("dymcModel").setProperty("/OldAssestReq/" + i+"/status","Approved");
-			 var req = that.getOwnerComponent().getModel("dymcModel").getProperty("/OldAssestReq/"+i);
-			 this.empReq.push(req);
-			 that.getOwnerComponent().getModel("main").setProperty("/EmpFrag2",this.empReq);
-			 
-			 var nCount = that.getOwnerComponent().getModel("main").getProperty("/EmpFrag2");
-				 that.count.push(nCount);
-				 var empRequestLength = that.count.length;
-				 var sRes = {
-					 contHr: empRequestLength++
-				 };
-				 that.getOwnerComponent().getModel("main").setProperty("/EmpNotfCount", sRes);
+			if(oStatus[i] === oItmSelected){
+			 that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/" + i+"/oldAsst/status","Approved");
+			 that.getOwnerComponent().getModel("main").setProperty("/OldAssestReq/" + i+"/status","Approved");
+			 var req = that.getOwnerComponent().getModel("main").getProperty("/OldAssestReq/"+i);
+			//  this.empReq.push(req);
+			//  that.getOwnerComponent().getModel("main").setProperty("/EmpFrag2",this.empReq);
+
+			oEmpDetails.forEach((oEmp)=>{
+				if(oEmp.empid === Uid){
+					if(!oEmp.notify){
+						oEmp.notify=[];
+						oEmp.notify.push(req);
+						oEmp.notiCount = oEmp.notify.length;
+					}
+					else{
+						oEmp.notify.push(req);
+						oEmp.notiCount = oEmp.notify.length;
+					}				
+				}
+	
+		  });
+		  this.getOwnerComponent().getModel("main").setProperty("/EmployeeDetails",oEmpDetails);
+		  var rt =  that.getOwnerComponent().getModel("main").getProperty("/hrNotfCount");
+		  var yu = rt.contHr -1;
+		  if(yu>0){
+		  that.getOwnerComponent().getModel("main").setProperty("/hrNotfCount/contHr",yu);
+		  }
+		  else{
+			  that.getOwnerComponent().getModel("main").setProperty("/hrNotfCount/contHr",null);	
+		  }
+		  
+
 			 oStatus.splice(i,1);
-			 this.getView().getModel("dymcModel").refresh();
 			 this.getView().getModel("main").refresh();
 			}
 		}
@@ -263,30 +226,50 @@ sap.ui.define([
 
  onOldRejectPress:function(oEv){
 	debugger;
-	var oStatus = this.getOwnerComponent().getModel("dymcModel").getProperty("/OldAssestReq");
+	var oStatus = this.getOwnerComponent().getModel("main").getProperty("/OldAssestReq");
+	var oEmpDetails = this.getOwnerComponent().getModel("main").getProperty("/EmployeeDetails");
 	var oItm = oEv.getSource();
 	var oList = oItm.getParent().getParent().getParent();
-	var Uid =  oEv.getSource().getParent().getParent().getTitle();
-	var IDU = Uid.substr(17,3);
+	// var Uid =  oEv.getSource().getParent().getParent().getTitle();
+	var Uid = oEv.getSource().getBindingContext("main").getObject().empId;
+	var oItmSelected = oEv.getSource().getBindingContext("main").getObject();	
+	// var IDU = Uid.substr(17,3);
 	var that = this;
    
 	for(let i=0; i<oStatus.length; i++){
-		if(oStatus[i].empId === IDU){
-		 that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/" + i+"/OldAsst_Request/status","Rejected");
-		 that.getOwnerComponent().getModel("dymcModel").setProperty("/OldAssestReq/" + i+"/status","Rejected");
-		 var req = that.getOwnerComponent().getModel("dymcModel").getProperty("/OldAssestReq/"+i);
-		 this.empReq.push(req);
-		 that.getOwnerComponent().getModel("main").setProperty("/EmpFrag2",this.empReq);
-		 
-		 var nCount = that.getOwnerComponent().getModel("main").getProperty("/EmpFrag2");
-			 that.count.push(nCount);
-			 var empRequestLength = that.count.length;
-			 var sRes = {
-				 contHr: empRequestLength++
-			 };
-			 that.getOwnerComponent().getModel("main").setProperty("/EmpNotfCount", sRes);
+		if(oStatus[i] === oItmSelected){
+		 that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/" + i+"/oldAsst/status","Rejected");
+		 that.getOwnerComponent().getModel("main").setProperty("/OldAssestReq/" + i+"/status","Rejected");
+		 var req = that.getOwnerComponent().getModel("main").getProperty("/OldAssestReq/"+i);
+		//  this.empReq.push(req);
+		//  that.getOwnerComponent().getModel("main").setProperty("/EmpFrag2",this.empReq);
+
+		oEmpDetails.forEach((oEmp)=>{
+			if(oEmp.empid === Uid){
+				if(!oEmp.notify){
+					oEmp.notify=[];
+					oEmp.notify.push(req);
+					oEmp.notiCount = oEmp.notify.length;
+				}
+				else{
+					oEmp.notify.push(req);
+					oEmp.notiCount = oEmp.notify.length;
+				}				
+			}
+
+	  });
+	  this.getOwnerComponent().getModel("main").setProperty("/EmployeeDetails",oEmpDetails);
+	  var rt =  that.getOwnerComponent().getModel("main").getProperty("/hrNotfCount");
+	  var yu = rt.contHr -1;
+	  if(yu>0){
+	  that.getOwnerComponent().getModel("main").setProperty("/hrNotfCount/contHr",yu);
+	  }
+	  else{
+		  that.getOwnerComponent().getModel("main").setProperty("/hrNotfCount/contHr",null);	
+	  }
+	  
+
 		 oStatus.splice(i,1);
-		 this.getView().getModel("dymcModel").refresh();
 		 this.getView().getModel("main").refresh();
 		}
 	}
@@ -298,6 +281,126 @@ sap.ui.define([
 
 	this.getOwnerComponent().getModel("flexibleLayout").setProperty("/layout","OneColumn");
 	this.oRouter.navTo("RouteMain");
+},
+
+onAcceptNew:function(oEv){
+	debugger;
+	var oStatus = this.getOwnerComponent().getModel("main").getProperty("/NewReqAsst");
+	var oEmpDetails = this.getOwnerComponent().getModel("main").getProperty("/EmployeeDetails");
+	var oItmSelectsd =  oEv.getSource().getBindingContext("main").getObject();	
+	var Uid =  oItmSelectsd.empID;
+	var that = this;
+   
+	for(let i=0; i<oStatus.length; i++){
+		if(oStatus[i] === oItmSelectsd){
+			
+		 that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/" + i+"/requests/status","Approved");
+		 that.getOwnerComponent().getModel("main").setProperty("/NewReqAsst/" + i+"/status","Approved");
+		 var req = that.getOwnerComponent().getModel("main").getProperty("/NewReqAsst/"+i);
+		//  this.empReq.push(req);
+		//  that.getOwnerComponent().getModel("main").setProperty("/EmpFrag",this.empReq);
+
+		 oEmpDetails.forEach((oEmp)=>{
+			if(oEmp.empid === Uid){
+				if(!oEmp.notify){
+					oEmp.notify=[];
+					oEmp.notify.push(req);
+					oEmp.notiCount = oEmp.notify.length;
+				}
+				else{
+					oEmp.notify.push(req);
+					oEmp.notiCount = oEmp.notify.length;
+				}				
+			}
+
+	  });
+	  this.getOwnerComponent().getModel("main").setProperty("/EmployeeDetails",oEmpDetails);
+
+
+
+		 //For Notification Count
+		//  var nCount = that.getOwnerComponent().getModel("main").getProperty("/EmpFrag"+i);
+		// 	 that.count.push(nCount);
+		// 	 var empRequestLength = that.count.length;
+		// 	 var sRes = {
+		// 		 contHr: empRequestLength++
+		// 	 };
+			// that.getOwnerComponent().getModel("main").setProperty("/EmpNotfCount", sRes);
+
+
+			var rt =  that.getOwnerComponent().getModel("main").getProperty("/hrNotfCount");
+			var yu = rt.contHr -1;
+			if(yu>0){
+			that.getOwnerComponent().getModel("main").setProperty("/hrNotfCount/contHr",yu);
+			}
+			else{
+				that.getOwnerComponent().getModel("main").setProperty("/hrNotfCount/contHr",null);	
+			}
+			
+				
+			
+			// 
+
+		 oStatus.splice(i,1);
+		// oEv.getSource().setEnabled(false);
+		 that.getView().getModel("main").refresh();
+		}
+	}
+ 
+},
+
+onRejectNew:function(oEv){
+	debugger;
+	var oStatus = this.getOwnerComponent().getModel("main").getProperty("/NewReqAsst");
+	var oEmpDetails = this.getOwnerComponent().getModel("main").getProperty("/EmployeeDetails"); 
+	var oItmSelectsd =  oEv.getSource().getBindingContext("main").getObject();	
+	var Uid =  oItmSelectsd.empID;
+	var that = this;
+   
+	for(let i=0; i<oStatus.length; i++){
+		if(oStatus[i] === oItmSelectsd){
+		 that.getOwnerComponent().getModel("main").setProperty("/AssetsAlloted/" + i+"/requests/status","Rejected");
+		 that.getOwnerComponent().getModel("main").setProperty("/NewReqAsst/" + i+"/status","Rejected");
+		 var req = that.getOwnerComponent().getModel("main").getProperty("/NewReqAsst/"+i);
+		//  this.empReq.push(req);
+		//  that.getOwnerComponent().getModel("main").setProperty("/EmpFrag",this.empReq);
+		 
+
+
+		 //For Notification Count
+		//  var nCount = that.getOwnerComponent().getModel("main").getProperty("/EmpFrag");
+		// 	 that.count.push(nCount);
+		// 	 var empRequestLength = that.count.length;
+		// 	 var sRes = {
+		// 		 contHr: empRequestLength++
+		// 	 };
+		// 	that.getOwnerComponent().getModel("main").setProperty("/EmpNotfCount", sRes);
+		oEmpDetails.forEach((oEmp)=>{
+			if(oEmp.empid === Uid){
+				if(!oEmp.notify){
+					oEmp.notify=[];
+					oEmp.notify.push(req);
+					oEmp.notiCount = oEmp.notify.length;
+				}
+				else{
+					oEmp.notify.push(req);
+					oEmp.notiCount = oEmp.notify.length;
+				}				
+			}
+
+	  });
+	  this.getOwnerComponent().getModel("main").setProperty("/EmployeeDetails",oEmpDetails);
+	  
+			var rt =  that.getOwnerComponent().getModel("main").getProperty("/hrNotfCount");
+			var yu = rt.contHr -1;
+			that.getOwnerComponent().getModel("main").setProperty("/hrNotfCount/contHr",yu);
+			// 
+
+		 oStatus.splice(i,1);
+		 this.getView().getModel("main").refresh();
+		}
+	}
+ 
 },
 	 
 

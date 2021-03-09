@@ -9,8 +9,10 @@
 	busyIndicatorDelay="0"
 >
 <Page title="Detail-Detail">
+<headerContent>
+	<OverflowToolbarButton type="Transparent" text="Download" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" tooltip="Download Table Data" iconDensityAware="false"  press="empTableExport1"/>
+</headerContent>
 <content>
-	<OverflowToolbarButton type="Transparent" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" tooltip="Download Table Data" iconDensityAware="false"  press="empTableExport1"/>
 	<List
 		headerText="Products">
 			<ObjectListItem id="objId"

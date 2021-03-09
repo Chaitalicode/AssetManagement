@@ -6,12 +6,23 @@
 	height="100%"
 	busyIndicatorDelay="0"
 >
-<Page title="Master" >
+<Page title="MASTER" >
 <content>
 <List items="{main>/Masterlist}" >
 	<ObjectListItem type="Navigation" press="onList" intro="{main>name}"></ObjectListItem>
 </List>
  
 </content>
+<footer>
+					<Bar>
+						<!-- <contentMiddle>
+						<Button icon="sap-icon://endoscopy" text="Copyright"></Button>
+						<Text text="Support Portal"></Text>
+						</contentMiddle>
+						<contentRight>
+						<Text text="Contact Us"></Text>
+						</contentRight> -->
+					</Bar>
+				</footer>
 </Page>
 </mvc:View>

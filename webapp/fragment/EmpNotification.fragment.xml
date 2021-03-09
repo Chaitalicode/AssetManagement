@@ -4,7 +4,7 @@
 		class="sapUiPopupWithPadding"
 		placement="Bottom" showCloseButton="true" afterClose="onAfterClose" >
 		<VBox >
-	<List id="EmpList" items="{main>/EmpFrag}" showNoData="false">
+	<List id="EmpList" showNoData="false">
 	    <NotificationListItem
 				title="Your request for {main>nwItem} has been {main>status}"
 				showCloseButton="true"
@@ -19,9 +19,9 @@
                 
 		</NotificationListItem>
 	</List>
-	<List id="EmpList2" items="{main>/EmpFrag2}" showNoData="false">
+	<List id="EmpList2" showNoData="false">
 	    <NotificationListItem
-				title="Your request for {main>asstNm} has been {main>status}"
+				title="Your request for {main>asstId} has been {main>status}"
 				showCloseButton="true"
 				unread="true"
 				priority="None"

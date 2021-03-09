@@ -27,8 +27,9 @@
                       	<content>
 						  <Label text="Details of Employees"></Label>
                         	<ToolbarSpacer width=""/>
-                          	<!-- <OverflowToolbarButton id="clearTabFilters" type="Transparent" visible="true" icon="sap-icon://clear-filter" iconFirst="true" width="auto" enabled="true" tooltip="Clear All Filters" iconDensityAware="false"  press="clearTableFilters"/>                                                           -->
-                          	<OverflowToolbarButton type="Transparent" icon="sap-icon://download" iconFirst="true" width="auto" enabled="true" tooltip="Download Table Data" iconDensityAware="false"  press="empTableExport"/>
+                         <!-- <OverflowToolbarButton id="clearTabFilters" type="Transparent" visible="true" icon="sap-icon://clear-filter" iconFirst="true" width="auto" enabled="true" tooltip="Clear All Filters" iconDensityAware="false"  press="clearTableFilters"/>     -->
+							     <Button  text="Download Table" press="empTableExport"></Button>                                                    
+                          	<!-- <OverflowToolbarButton textDirection="LTR" type="Transparent"  iconFirst="true" width="100px" enabled="true" text="Download Table" tooltip="Download Table Data" iconDensityAware="false"  press="empTableExport"/> -->
                       	</content>
                   	</OverflowToolbar>
               	</headerToolbar>
@@ -49,7 +50,7 @@
 								<cells>
 									<Text text="{main>empId}"></Text>
 									<Text text="{main>empName}"></Text>
-									<Button text="show" press="onShow"></Button>
+									<Button text="Assigned Assets" type="Transparent" press="onShow"></Button>
 								
 									<!--<Text text="{Aworg}"></Text>-->
 								</cells>

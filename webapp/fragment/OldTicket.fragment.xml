@@ -1,0 +1,55 @@
+<core:FragmentDefinition xmlns="sap.m"	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" 	xmlns:f="sap.ui.layout.form">
+<Dialog id="oldAsstDialogID" showHeader="true" title="Request Form" class="txtOld">
+
+<f:SimpleForm id="simpleID">
+            <Label></Label>
+			<Label text="Employee Id"></Label>
+			<Input id="id" width="100%" editable="false"></Input>
+			<Label text="Employee Name"></Label>
+			<Input id="name" width="100%" editable="false"></Input>
+			
+			<Label text="Datepicker"></Label>
+			<DatePicker id="dateId" width="100%" change="validateOld"></DatePicker>		
+		  
+			<Label text="Asset ID" ></Label>
+			<Input id="asstID" liveChange="validateOld"></Input>			
+           
+			<Label text="Asset Name"></Label>
+			<Input id="asstNm" liveChange="validateOld"></Input>
+          
+		    <Label ></Label>
+						<MessageStrip type="Warning" text="Upload a maximum of 1 PDF or PNG file type (Total size allowed is 300kb)"></MessageStrip>
+			<Label ></Label>
+						<Label text="Attachments"></Label>
+							<HBox>
+								<u:FileUploader  id="idFileuploader" uploadComplete="handleUploadComplete" change="validateOld"></u:FileUploader>
+								<Button icon="sap-icon://attachment" text="Upload attachment" press="onhandleUpload"></Button>
+							</HBox>
+				
+			<Label ></Label>
+					<VBox class="hBox1style" id="idMssgStrip" visible="false">
+						<MessageStrip type="Error" text="Please select files of total size less than 300kb"></MessageStrip>
+					</VBox>
+
+					<Label ></Label>		
+							<Label class="sapUiSmallMarginBegin" text="List of attachments"></Label>
+							<UploadCollection id="upldCollId" uploadButtonInvisible="true" items="{main>/AssetsAlloted/file}">
+								<items>
+									<UploadCollectionItem id="upldItemId" visibleEdit="false" enableDelete="true" deletePress="onDelete" fileName="{main>filename}"
+										url="{main>file}" press="onDownload" ></UploadCollectionItem>
+								</items>
+							</UploadCollection>
+						
+				<Label ></Label>
+
+			    <Label text="Reason" required="true"></Label>
+			    <TextArea id="oldtxtID"  liveChange="validateOld" width="100%" maxLength="20"	showExceededText="true"  valueStateText="Exceeding More than Limit"></TextArea>
+				
+</f:SimpleForm>
+
+<buttons>
+	<Button text="Submit Request" type="Accept" press="onSubmitReqAsstOld"></Button>
+	<Button text="Cancel" type="Reject" press="onClose"></Button>
+</buttons>
+</Dialog>
+</core:FragmentDefinition>

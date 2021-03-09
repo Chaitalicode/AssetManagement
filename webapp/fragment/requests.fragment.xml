@@ -1,6 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m"  xmlns:ui="sap.ui.table"	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" 	xmlns:f="sap.ui.layout.form">
 <!-- <Dialog id="idDialogS67" showHeader="true" title="Request Form" > -->
 
+<!-- New Assets -->
 	<IconTabBar
 		id="idIconTabBar"
 		select=".onFilterSelect"
@@ -10,7 +11,7 @@
             <Table id="empReqFrNew"
 		inset="false"
 		items="{
-			path: 'main>/EmpFrag'
+			path: 'main>/NewReqAsst'
 		}">
 		<headerToolbar>
 			<OverflowToolbar>
@@ -54,6 +55,16 @@
 				hAlign="End">
 				<Text text="Reason" />
 			</Column>
+
+			 <Column
+				hAlign="End">
+				<Text text="Accept" />
+			</Column>
+
+			 <Column
+				hAlign="End">
+				<Text text="Reject" />
+			</Column>
 		
 		</columns>
 		<items>
@@ -70,13 +81,20 @@
 					<Text
 						text="{main>status}" />
                     <Text
-						text="{main>txtArea}" />	
+						text="{main>reason}" />
+					 <Button
+						text="Accept" press="onAcceptNew" />
+					 <Button
+						text="Reject" press="onRejectNew" />	
 				
 				</cells>
 			</ColumnListItem>
 		</items>
 	</Table> 
              </IconTabFilter>
+			 <!--  -->
+
+			 <!-- Old Assets -->
 			<IconTabFilter
 				icon="sap-icon://compare"
 				iconColor="Critical"
@@ -86,7 +104,7 @@
 				 <Table id="empReqFrOld"
 		inset="false"
 		items="{
-			path: 'dymcModel>/OldAssestReq'
+			path: 'main>/OldAssestReq'
 		}">
 		<headerToolbar>
 			<OverflowToolbar>
@@ -134,30 +152,44 @@
 				hAlign="End">
 				<Text text="Attachments" />
 			</Column>
+			 <Column
+				hAlign="End">
+				<Text text="Accept" />
+			</Column>
+		 <Column
+				hAlign="End">
+				<Text text="Reject" />
+			</Column>
 		
 		</columns>
 		<items>
 			<ColumnListItem>
 				<cells>
                     <Text
-						text="{dymcModel>empId}" />
+						text="{main>empId}" />
                     <Text
-						text="{dymcModel>empName}" />
+						text="{main>empName}" />
                     <Text
-						text="{dymcModel>asstId}" />
+						text="{main>asstId}" />
 					<Text
-						text="{dymcModel>asstNm}" />
+						text="{main>asstNm}" />
 					<Text
-						text="{dymcModel>status}" />
+						text="{main>status}" />
                     <Text
-						text="{dymcModel>reason}" />	
+						text="{main>reason}" />	
 					
-				<Link href="{dymcModel>img}" text="Download"/>
+				<Link href="{main>img}" target="_blank" text="Download"/>
+				<Button
+						text="Accept" press="onOldAcceptPress" />
+					 <Button
+						text="Reject" press="onOldRejectPress" />	
+				
 				</cells>
 			</ColumnListItem>
 		</items>
 	</Table> 
 	</IconTabFilter>
+	
             	</items>
         	</IconTabBar>
 	

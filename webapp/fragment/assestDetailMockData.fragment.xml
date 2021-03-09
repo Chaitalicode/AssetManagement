@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m"  xmlns:ui="sap.ui.table"	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified" 	xmlns:f="sap.ui.layout.form">
 <!-- <Dialog id="idDialogS67" showHeader="true" title="Request Form" > -->
-	<ui:Table rows="{/Assets_Details}"
+	<ui:Table rows="{main>/Assets_Details}"
 				id="uiTableID1"
 				visibleRowCount="7"
 				paste="onPaste"
@@ -26,19 +26,19 @@
 					<ui:Column width="11rem">
 						<Label text="Assest Id" />
 						<ui:template>
-							<Text text="{item_id}" wrapping="false" />
+							<Text text="{main>item_id}" wrapping="false" />
 						</ui:template>
 					</ui:Column>
 					<ui:Column width="11rem">
 						<Label text="Assest Name" />
 						<ui:template>
-							<Input value="{item_name}"/>
+							<Input value="{main>item_name}"/>
 						</ui:template>
 					</ui:Column>
 					<ui:Column width="11rem">
 						<Label text="Assest Name" />
 						<ui:template>
-							<Input value="{year}"/>
+							<Input value="{main>year}"/>
 						</ui:template>
 					</ui:Column>
                     <!-- <ui:Column width="11rem">

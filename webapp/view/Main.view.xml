@@ -5,27 +5,44 @@
     xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.f"
+	xmlns:tnt="sap.tnt"
 	xmlns:core="sap.ui.core"
 >
 	<!-- <Shell id="shell"> -->
 		<!-- <App id="app">
 			<pages> -->
-				<Page class="page1" title="{i18n>title}">
+				<Page showFooter="true"  class="page1" showHeader="false" backgroundDesign="Transparent" title="{i18n>title}">
+				<tnt:ToolHeader >
+					<Image id="abc22" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/SAP_2011_logo.svg/1200px-SAP_2011_logo.svg.png" class="logoimage"/>
+					<ToolbarSpacer/>
+					<Text class="txt" text="ASSETS MANAGEMENT"/>
+					<ToolbarSpacer/>
+				</tnt:ToolHeader>
 					<content> 
 						
 			
-			<l:VerticalLayout width="100%">
-			
+			<l:VerticalLayout class="sapUiLargeMarginTop" width="100%">
+			<VBox class="sapUiLargeMarginTop" >
 			<VBox class="sapUiLargeMarginTop" alignItems="Center" alignContent="Center" >
 			<Input width="250px" id="emlId" placeholder="{i18n>email}"></Input>
 			<Input width="250px" id="pwdId" type="Password" placeholder="{i18n>password}"></Input>
-			<Button text="{i18n>Login}" press="onLogin" type="Accept"></Button>
+			<Button width="100%" text="{i18n>Login}" icon="sap-icon://visits" press="onLogin1" type="Accept"></Button>
 			</VBox>
-			
+			</VBox>
 			</l:VerticalLayout>
 		
 					</content>
-					
+					<footer>
+					<Bar>
+						<contentMiddle>
+						<Button icon="sap-icon://endoscopy" text="Copyright"></Button>
+						<Text text="Support Portal"></Text>
+						</contentMiddle>
+						<contentRight>
+						<Text text="Contact Us"></Text>
+						</contentRight>
+					</Bar>
+				</footer>
 				</Page>
 			<!-- </pages>
 		</App> -->

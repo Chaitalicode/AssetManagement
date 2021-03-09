@@ -9,6 +9,11 @@ sap.ui.define([
 		onInit: function () {
 			debugger;
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            this.oRouter.navTo("split1", {
+                hrData: "0"
+            });
+            this.getOwnerComponent().getModel("flexibleLayout").setProperty("/layout","TwoColumnsMidExpanded");
+                
 
 		},
         
